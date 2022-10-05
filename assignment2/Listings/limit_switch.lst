@@ -1,0 +1,59 @@
+C166 COMPILER V7.57.0, LIMIT_SWITCH                                                        10/05/2022 12:07:04 PAGE 1   
+
+
+C166 COMPILER V7.57.0, COMPILATION OF MODULE LIMIT_SWITCH
+OBJECT MODULE PLACED IN .\Objects\limit_switch.obj
+COMPILER INVOKED BY: D:\Keil\C166\BIN\C166.EXE Drivers\limit_switch.c BROWSE MOD167 DEBUG PRINT(.\Listings\limit_switch.
+                    -lst) TABS(2) OBJECT(.\Objects\limit_switch.obj) 
+
+ stmt lvl     source
+
+    1         // a1793769 - Emily Zhang
+    2         #include "gpio.h"
+    3         #include "limit_switch.h"
+    4         
+    5         unsigned int checkLimitSwitch(void)
+    6         {
+    7  1          unsigned int outer_switch;
+    8  1          unsigned int inner_switch;
+    9  1      
+   10  1          outer_switch = readPinP2(OUTER_LIMIT_SWITCH_PIN);
+   11  1          inner_switch = readPinP2(INNER_LIMIT_SWITCH_PIN);
+   12  1      
+   13  1          if (outer_switch)
+   14  1          {
+   15  2              // If either outer switches high, return OUTER_LIMIT_SWITCH_HIGH
+   16  2              return OUTER_LIMIT_SWITCH_HIGH;
+   17  2          }
+   18  1          else if (inner_switch)
+   19  1          {
+   20  2              // If either inner switches high, return INNER_LIMIT_SWITCH_HIGH
+   21  2              return INNER_LIMIT_SWITCH_HIGH;
+   22  2          }
+   23  1          else
+   24  1          {
+   25  2              // If neither conditions satisfied, return NEITHER_LIMIT_SWITCH_HIGH;
+   26  2              return NEITHER_LIMIT_SWITCH_HIGH;
+   27  2          }
+   28  1      }
+
+
+MODULE INFORMATION:   INITIALIZED  UNINITIALIZED
+  CODE SIZE        =          40     --------
+  NEAR-CONST SIZE  =    --------     --------
+  FAR-CONST SIZE   =    --------     --------
+  HUGE-CONST SIZE  =    --------     --------
+  XHUGE-CONST SIZE =    --------     --------
+  NEAR-DATA SIZE   =    --------     --------
+  FAR-DATA SIZE    =    --------     --------
+  XHUGE-DATA SIZE  =    --------     --------
+  IDATA-DATA SIZE  =    --------     --------
+  SDATA-DATA SIZE  =    --------     --------
+  BDATA-DATA SIZE  =    --------     --------
+  HUGE-DATA SIZE   =    --------     --------
+  BIT SIZE         =    --------     --------
+  INIT'L SIZE      =    --------     --------
+END OF MODULE INFORMATION.
+
+
+C166 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

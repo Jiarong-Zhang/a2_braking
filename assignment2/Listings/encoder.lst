@@ -1,0 +1,52 @@
+C166 COMPILER V7.57.0, ENCODER                                                             10/05/2022 23:19:19 PAGE 1   
+
+
+C166 COMPILER V7.57.0, COMPILATION OF MODULE ENCODER
+OBJECT MODULE PLACED IN .\Objects\encoder.obj
+COMPILER INVOKED BY: D:\Keil\C166\BIN\C166.EXE Source\encoder.c BROWSE MOD167 DEBUG PRINT(.\Listings\encoder.lst) TABS(2
+                    -) OBJECT(.\Objects\encoder.obj) 
+
+ stmt lvl     source
+
+    1         // a1793769 - Emily Zhang
+    2         /**
+    3         Implementation of encoder calculations
+    4         **/
+    5         
+    6         #include <reg167.h>
+    7         #include "encoder.h"
+    8         
+    9         /********** Function Declearations **********/
+   10         
+   11         float encoderGetVelocity(void)
+   12         {
+   13  1        float raw_encoder_output = 0;
+   14  1        float interpolated_result = 0;
+   15  1      
+   16  1        raw_encoder_output = adcRead(ENCODER_PIN, FIXED_SINGLE);
+   17  1      
+   18  1        interpolated_result = raw_encoder_output * ENCODER_STEP_SIZE;
+   19  1      
+   20  1        return interpolated_result;
+   21  1      }
+
+
+MODULE INFORMATION:   INITIALIZED  UNINITIALIZED
+  CODE SIZE        =          62     --------
+  NEAR-CONST SIZE  =    --------     --------
+  FAR-CONST SIZE   =    --------     --------
+  HUGE-CONST SIZE  =    --------     --------
+  XHUGE-CONST SIZE =    --------     --------
+  NEAR-DATA SIZE   =    --------     --------
+  FAR-DATA SIZE    =    --------     --------
+  XHUGE-DATA SIZE  =    --------     --------
+  IDATA-DATA SIZE  =    --------     --------
+  SDATA-DATA SIZE  =    --------     --------
+  BDATA-DATA SIZE  =    --------     --------
+  HUGE-DATA SIZE   =    --------     --------
+  BIT SIZE         =    --------     --------
+  INIT'L SIZE      =    --------     --------
+END OF MODULE INFORMATION.
+
+
+C166 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

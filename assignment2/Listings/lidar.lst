@@ -1,0 +1,106 @@
+C166 COMPILER V7.57.0, LIDAR                                                               10/06/2022 02:44:09 PAGE 1   
+
+
+C166 COMPILER V7.57.0, COMPILATION OF MODULE LIDAR
+OBJECT MODULE PLACED IN .\Objects\lidar.obj
+COMPILER INVOKED BY: D:\Keil\C166\BIN\C166.EXE Source\lidar.c BROWSE MOD167 DEBUG PRINT(.\Listings\lidar.lst) TABS(2) OB
+                    -JECT(.\Objects\lidar.obj) 
+
+ stmt lvl     source
+
+    1         // a1793769 - Emily Zhang
+    2         /**
+    3         Function implementation for operations related to the LIDAR 
+    4         **/
+    5         
+    6         #include <reg167.h>
+    7         #include "Drivers/adc.h"
+    8         #include "Drivers/timer.h"
+    9         #include "Drivers/platform.h"
+   10         #include "lidar.h"
+   11         #include "buffer.h"
+   12         
+   13         /********** Function Declearations **********/
+   14         
+   15         /*void lidarGetDistances (float* array, unsigned int array_size)
+   16         {
+   17           float raw_lidar_output = 0;
+   18           float interpolated_result = 0; 
+   19           unsigned int index = 0;
+   20           unsigned int toggle = 0;
+   21         
+   22           // collect first result
+   23           raw_lidar_output = adcRead(LIDAR_PIN, FIXED_SINGLE);
+   24           interpolated_result = (raw_lidar_output * LIDAR_STEP_SIZE) + 5;
+   25           array[index] = interpolated_result;
+   26           index++;
+   27         
+   28           // if array not full yet
+   29           while (index < (array_size))
+   30           {
+   31             // wait 10ms before collect next distance
+   32             timerT6StartMS(10);
+   33             while(T6OTL == toggle){}
+   34             toggle = !toggle;
+   35             T6R = 0;
+   36         
+   37             // collect/calculate lidar distance
+   38             raw_lidar_output = adcRead(LIDAR_PIN, FIXED_SINGLE);
+   39             interpolated_result = (raw_lidar_output * LIDAR_STEP_SIZE) + 5;
+   40         
+   41             // store distance
+   42             array[index] = interpolated_result;
+   43             index++;
+   44           }
+   45         
+   46           return;
+   47         }*/
+   48         
+   49         /*float* lidarSetupBuffer(void)
+   50         {
+   51           float distance_buffer[BUFFER_SIZE] = {0};
+   52         
+   53           return &distance_buffer;
+   54         }*/
+C166 COMPILER V7.57.0, LIDAR                                                               10/06/2022 02:44:09 PAGE 2   
+
+   55         
+   56         float lidarGetResult(void)
+   57         {
+   58  1        float raw_lidar_output = 0;
+   59  1        float interpolated_result = 0; 
+   60  1      
+   61  1        // collect and return result
+   62  1        raw_lidar_output = adcRead(LIDAR_PIN, FIXED_SINGLE);
+   63  1        interpolated_result = (raw_lidar_output * LIDAR_STEP_SIZE) + 5;
+   64  1        
+   65  1        return interpolated_result;
+   66  1      }
+   67         
+   68         void lidarUpdateBuffer(float* buffer)
+   69         {
+   70  1        float lidar_result = lidarGetResult();
+   71  1        pop_front(buffer, BUFFER_SIZE);
+   72  1        push_back(buffer, BUFFER_SIZE, lidar_result);
+   73  1      }
+
+
+MODULE INFORMATION:   INITIALIZED  UNINITIALIZED
+  CODE SIZE        =         114     --------
+  NEAR-CONST SIZE  =    --------     --------
+  FAR-CONST SIZE   =    --------     --------
+  HUGE-CONST SIZE  =    --------     --------
+  XHUGE-CONST SIZE =    --------     --------
+  NEAR-DATA SIZE   =    --------     --------
+  FAR-DATA SIZE    =    --------     --------
+  XHUGE-DATA SIZE  =    --------     --------
+  IDATA-DATA SIZE  =    --------     --------
+  SDATA-DATA SIZE  =    --------     --------
+  BDATA-DATA SIZE  =    --------     --------
+  HUGE-DATA SIZE   =    --------     --------
+  BIT SIZE         =    --------     --------
+  INIT'L SIZE      =    --------     --------
+END OF MODULE INFORMATION.
+
+
+C166 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

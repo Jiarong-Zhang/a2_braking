@@ -1,0 +1,94 @@
+C166 COMPILER V7.57.0, MAIN                                                                10/06/2022 02:45:50 PAGE 1   
+
+
+C166 COMPILER V7.57.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: D:\Keil\C166\BIN\C166.EXE Source\main.c BROWSE MOD167 DEBUG PRINT(.\Listings\main.lst) TABS(2) OBJE
+                    -CT(.\Objects\main.obj) 
+
+ stmt lvl     source
+
+    1         // a1793769 - Emily Zhang
+    2         /*
+    3         Main function that controls the flow of the entire
+    4         subsystem
+    5         */
+    6         
+    7         /* Include required submodules */
+    8         #include "Drivers/aeb.h"
+    9         #include "Drivers/adc.h"
+   10         #include "Drivers/timer.h"
+   11         #include "Drivers/platform.h"
+   12         #include "encoder.h"
+   13         #include "lidar.h"
+   14         #include "calculations.h"
+   15         #include <reg167.h>
+   16         
+   17         /* Preprocessor operations */
+   18         volatile unsigned int wait_flag; // needs to be globals, used by interrupt
+   19         
+   20         void timer_interrupt (void) interrupt 0x26
+   21         {
+   22  1        T6R = 0;
+   23  1        wait_flag = 0;
+   24  1      }
+   25         
+   26         void main(void)
+   27         {
+   28  1        // volatile float distance_buffer[BUFFER_SIZE] = {0xFFFF};
+   29  1        volatile float result = 0;
+   30  1        volatile unsigned int ready_flag = 0;
+   31  1        volatile float buffer[BUFFER_SIZE] = {0};
+   32  1      
+   33  1        T6IC = 0x0044;
+   34  1        IEN = 1;
+   35  1        wait_flag = 0;
+   36  1        
+   37  1        aebInit(); 
+   38  1        adcGpioInit();
+   39  1        timerT6Config(GPT_2_PRESC_4, TIMER_MODE, COUNT_DOWN);
+   40  1        
+   41  1        while(1)
+   42  1        {
+   43  2          ready_flag = aebRead();
+   44  2          if (ready_flag == 1)
+   45  2          {
+   46  3            if (wait_flag == 0)
+   47  3            {
+   48  4              IEN = 0; // disable interrupts for now
+   49  4              
+   50  4              // result = lidarGetResult();
+   51  4              // push_back(distance_buffer, BUFFER_SIZE, result);
+   52  4              lidarUpdateBuffer(buffer);
+   53  4      
+   54  4              calculationsHandler(buffer);
+C166 COMPILER V7.57.0, MAIN                                                                10/06/2022 02:45:50 PAGE 2   
+
+   55  4              IEN = 1; // re-enable interrupts
+   56  4              wait_flag = 1;
+   57  4              timerT6StartMS(10);
+   58  4            }
+   59  3          }
+   60  2        }
+   61  1      }
+
+
+MODULE INFORMATION:   INITIALIZED  UNINITIALIZED
+  CODE SIZE        =         132     --------
+  NEAR-CONST SIZE  =          12     --------
+  FAR-CONST SIZE   =    --------     --------
+  HUGE-CONST SIZE  =    --------     --------
+  XHUGE-CONST SIZE =    --------     --------
+  NEAR-DATA SIZE   =           2     --------
+  FAR-DATA SIZE    =    --------     --------
+  XHUGE-DATA SIZE  =    --------     --------
+  IDATA-DATA SIZE  =    --------     --------
+  SDATA-DATA SIZE  =    --------     --------
+  BDATA-DATA SIZE  =    --------     --------
+  HUGE-DATA SIZE   =    --------     --------
+  BIT SIZE         =    --------     --------
+  INIT'L SIZE      =    --------     --------
+END OF MODULE INFORMATION.
+
+
+C166 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

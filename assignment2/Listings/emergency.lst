@@ -1,0 +1,48 @@
+C166 COMPILER V7.57.0, EMERGENCY                                                           10/05/2022 12:07:04 PAGE 1   
+
+
+C166 COMPILER V7.57.0, COMPILATION OF MODULE EMERGENCY
+OBJECT MODULE PLACED IN .\Objects\emergency.obj
+COMPILER INVOKED BY: D:\Keil\C166\BIN\C166.EXE Drivers\emergency.c BROWSE MOD167 DEBUG PRINT(.\Listings\emergency.lst) T
+                    -ABS(2) OBJECT(.\Objects\emergency.obj) 
+
+ stmt lvl     source
+
+    1         // a1793769 - Emily Zhang
+    2         #include "emergency.h"
+    3         #include "gpio.h"
+    4         #include "motor.h"
+    5         
+    6         // Emergency stop function triggerd by interrupt
+    7         void emergencyStop(void) interrupt 0x1C
+    8         {
+    9  1          // Stays in this state until manual reset
+   10  1          while (readPinP2(EMERGENCY_STOP_PIN) != 1)
+   11  1          {
+   12  2              motorBrake();
+   13  2          }
+   14  1          // Once reset, reset motor state and resume
+   15  1          // previous state
+   16  1          motorOff();
+   17  1      }
+
+
+MODULE INFORMATION:   INITIALIZED  UNINITIALIZED
+  CODE SIZE        =          94     --------
+  NEAR-CONST SIZE  =    --------     --------
+  FAR-CONST SIZE   =    --------     --------
+  HUGE-CONST SIZE  =    --------     --------
+  XHUGE-CONST SIZE =    --------     --------
+  NEAR-DATA SIZE   =    --------     --------
+  FAR-DATA SIZE    =    --------     --------
+  XHUGE-DATA SIZE  =    --------     --------
+  IDATA-DATA SIZE  =    --------     --------
+  SDATA-DATA SIZE  =    --------     --------
+  BDATA-DATA SIZE  =    --------     --------
+  HUGE-DATA SIZE   =    --------     --------
+  BIT SIZE         =    --------     --------
+  INIT'L SIZE      =    --------     --------
+END OF MODULE INFORMATION.
+
+
+C166 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
