@@ -214,7 +214,7 @@
         <SetRegEntry>
           <Number>0</Number>
           <Key>DLGD167</Key>
-          <Name>(103=120,121,393,539,0)(3005=-1,-1,-1,-1,0)(108=-1,-1,-1,-1,0)(3004=-1,-1,-1,-1,0)(100=-1,-1,-1,-1,0)(102=1384,436,1718,777,1)(106=-1,-1,-1,-1,0)(82=-1,-1,-1,-1,0)(83=225,186,633,327,0)(84=1126,291,1474,458,1)(85=-1,-1,-1,-1,0)(86=-1,-1,-1,-1,0)(3009=1163,685,1520,826,1)(88=-1,-1,-1,-1,0)(89=-1,-1,-1,-1,0)(90=-1,-1,-1,-1,0)(93=-1,-1,-1,-1,0)(94=-1,-1,-1,-1,0)(95=-1,-1,-1,-1,0)(96=-1,-1,-1,-1,0)(97=956,468,1188,826,1)(91=-1,-1,-1,-1,0)(92=-1,-1,-1,-1,0)(101=-1,-1,-1,-1,0)(98=-1,-1,-1,-1,0)(105=-1,-1,-1,-1,0)(104=-1,-1,-1,-1,0)(80=-1,-1,-1,-1,0)(3007=-1,-1,-1,-1,0)(3000=-1,-1,-1,-1,0)(3012=165,121,483,297,0)</Name>
+          <Name>(103=120,121,393,539,0)(3005=-1,-1,-1,-1,0)(108=-1,-1,-1,-1,0)(3004=-1,-1,-1,-1,0)(100=-1,-1,-1,-1,0)(102=1384,436,1718,777,1)(106=-1,-1,-1,-1,0)(82=-1,-1,-1,-1,0)(83=225,186,633,327,0)(84=1149,677,1497,844,1)(85=-1,-1,-1,-1,0)(86=-1,-1,-1,-1,0)(3009=1118,646,1475,787,1)(88=-1,-1,-1,-1,0)(89=-1,-1,-1,-1,0)(90=-1,-1,-1,-1,0)(93=-1,-1,-1,-1,0)(94=1122,430,1354,762,1)(95=-1,-1,-1,-1,0)(96=-1,-1,-1,-1,0)(97=1630,462,1862,820,1)(91=-1,-1,-1,-1,0)(92=-1,-1,-1,-1,0)(101=-1,-1,-1,-1,0)(98=-1,-1,-1,-1,0)(105=-1,-1,-1,-1,0)(104=-1,-1,-1,-1,0)(80=-1,-1,-1,-1,0)(3007=-1,-1,-1,-1,0)(3000=-1,-1,-1,-1,0)(3012=165,121,483,297,0)</Name>
         </SetRegEntry>
         <SetRegEntry>
           <Number>0</Number>
@@ -226,25 +226,57 @@
         <Bp>
           <Number>0</Number>
           <Type>0</Type>
-          <LineNumber>83</LineNumber>
+          <LineNumber>154</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>67048</Address>
+          <Address>67146</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>Source\calculations.c</Filename>
+          <Filename>Drivers\timer.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\CALCULATIONS\83</Expression>
+          <Expression>\TIMER\154</Expression>
         </Bp>
         <Bp>
           <Number>1</Number>
           <Type>0</Type>
-          <LineNumber>42</LineNumber>
+          <LineNumber>145</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>67402</Address>
+          <Address>67078</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>1</BreakIfRCount>
+          <Filename>Drivers\timer.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression>\TIMER\145</Expression>
+        </Bp>
+        <Bp>
+          <Number>2</Number>
+          <Type>0</Type>
+          <LineNumber>17</LineNumber>
+          <EnabledFlag>1</EnabledFlag>
+          <Address>66548</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>1</BreakIfRCount>
+          <Filename>Drivers\timer.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression>\TIMER\17</Expression>
+        </Bp>
+        <Bp>
+          <Number>3</Number>
+          <Type>0</Type>
+          <LineNumber>40</LineNumber>
+          <EnabledFlag>1</EnabledFlag>
+          <Address>67940</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -253,7 +285,39 @@
           <BreakIfRCount>1</BreakIfRCount>
           <Filename>Source\main.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\MAIN\42</Expression>
+          <Expression>\MAIN\40</Expression>
+        </Bp>
+        <Bp>
+          <Number>4</Number>
+          <Type>0</Type>
+          <LineNumber>164</LineNumber>
+          <EnabledFlag>1</EnabledFlag>
+          <Address>67200</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>1</BreakIfRCount>
+          <Filename>Drivers\timer.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression>\\a1793769\TIMER\164</Expression>
+        </Bp>
+        <Bp>
+          <Number>5</Number>
+          <Type>0</Type>
+          <LineNumber>83</LineNumber>
+          <EnabledFlag>1</EnabledFlag>
+          <Address>0</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>0</BreakIfRCount>
+          <Filename>G:\micro_assignment2\assignment2\Source\calculations.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression></Expression>
         </Bp>
       </Breakpoint>
       <WatchWindow1>
@@ -366,7 +430,12 @@
         <Wi>
           <IntNumber>0</IntNumber>
           <FirstString>T6R</FirstString>
-          <SecondString>FF0000000000000000000000000000000000F03F0000000000000000000000000000000054365200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000100000001000000000000000000F03F11000000000000000000000000000000000000007A050100</SecondString>
+          <SecondString>FF0000000000000000000000000000000000F03F0000000000000000000000000000000054365200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000100000001000000000000000000E03F19000000000000000000000000000000000000007A050100</SecondString>
+        </Wi>
+        <Wi>
+          <IntNumber>1</IntNumber>
+          <FirstString>T3R</FirstString>
+          <SecondString>008000000000000000000000000000000000F03F0000000000000000000000000000000054335200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000100000002000000000000000000E03F19000000000000000000000000000000000000006C090100</SecondString>
         </Wi>
       </LogicAnalyzers>
     </TargetOption>

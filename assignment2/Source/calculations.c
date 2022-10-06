@@ -72,20 +72,22 @@ void calculationsHandler(float* buffer)
 	// Also check relative velocity
 	relative_velocity = calculateRelativeVel(buffer, BUFFER_SIZE);
 
-	// Send warning?
-	if ((min_distance > buffer[1]) && (relative_velocity < 0))
-	{
-		// send warning
-		aebWarning();
-	}
-
 	// Calculate relative braking torque
 	braking_torque = calculateBrakingTorque(linear_velocity, buffer[1]);
 
-	// Send warning?
-	if ((braking_torque > MAX_BRAKE_TORQUE) && (relative_velocity < 0))
+	// Clear output to DAC
+	dacReset();
+
+	// Send warning? (distance)
+	if ((min_distance > buffer[1]) && (relative_velocity < 0))
 	{
-		// send warning
+		// send warning, do not write to DAC
+		aebWarning();
+	}
+	// Send warning? (torque)
+	else if ((braking_torque > MAX_BRAKE_TORQUE) && (relative_velocity < 0))
+	{
+		// send warning,do not write to DAC
 		aebWarning();
 	}
 	else if (braking_torque == 0x00)

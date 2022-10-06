@@ -1,4 +1,4 @@
-C166 COMPILER V7.57.0, DAC                                                                 10/06/2022 10:54:33 PAGE 1   
+C166 COMPILER V7.57.0, DAC                                                                 10/06/2022 11:25:35 PAGE 1   
 
 
 C166 COMPILER V7.57.0, COMPILATION OF MODULE DAC
@@ -33,10 +33,15 @@ COMPILER INVOKED BY: D:\Keil\C166\BIN\C166.EXE Drivers\dac.c BROWSE MOD167 DEBUG
    23         {
    24  1        P2 |= ((input & 0xFF) << DAC_LSB_PIN);
    25  1      }
+   26         
+   27         void dacReset(void)
+   28         {
+   29  1        P2 &= ~(0xFF << DAC_LSB_PIN);
+   30  1      }
 
 
 MODULE INFORMATION:   INITIALIZED  UNINITIALIZED
-  CODE SIZE        =          32     --------
+  CODE SIZE        =          38     --------
   NEAR-CONST SIZE  =    --------     --------
   FAR-CONST SIZE   =    --------     --------
   HUGE-CONST SIZE  =    --------     --------

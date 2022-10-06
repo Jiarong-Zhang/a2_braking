@@ -23,5 +23,7 @@ void dacInit(void);
 
 void dacWrite(unsigned int input);
 
+void dacReset(void);
+
 
 #endif

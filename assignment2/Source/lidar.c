@@ -53,6 +53,12 @@ Function implementation for operations related to the LIDAR
 	return &distance_buffer;
 }*/
 
+void lidarTimerInit(void)
+{
+	timerT6Config(GPT_2_PRESC_4, TIMER_MODE, COUNT_DOWN);
+	T6IC = 0x0044; // set up timer 6interrupt config
+}
+
 float lidarGetResult(void)
 {
 	float raw_lidar_output = 0;

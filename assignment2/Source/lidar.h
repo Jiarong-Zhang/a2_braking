@@ -19,6 +19,8 @@ Function declarations for operations related to the LIDAR
 
 /********** Function Declearations **********/
 
+void lidarTimerInit(void);
+
 void lidarUpdateBuffer(float* buffer);
 
 float lidarGetResult(void);

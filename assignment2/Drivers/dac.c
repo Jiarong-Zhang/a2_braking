@@ -23,3 +23,8 @@ void dacWrite(unsigned int input)
 {
 	P2 |= ((input & 0xFF) << DAC_LSB_PIN);
 }
+
+void dacReset(void)
+{
+	P2 &= ~(0xFF << DAC_LSB_PIN);
+}

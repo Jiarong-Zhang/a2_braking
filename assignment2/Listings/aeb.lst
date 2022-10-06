@@ -1,4 +1,4 @@
-C166 COMPILER V7.57.0, AEB                                                                 10/06/2022 02:11:45 PAGE 1   
+C166 COMPILER V7.57.0, AEB                                                                 10/06/2022 12:11:49 PAGE 1   
 
 
 C166 COMPILER V7.57.0, COMPILATION OF MODULE AEB
@@ -14,29 +14,37 @@ COMPILER INVOKED BY: D:\Keil\C166\BIN\C166.EXE Drivers\aeb.c BROWSE MOD167 DEBUG
     4         **/
     5         #include "Drivers/aeb.h"
     6         #include "Drivers/gpio.h"
-    7         
+    7         #include "Drivers/timer.h"
     8         
-    9         void aebInit(void)
-   10         {
-   11  1        setPinDirectionP2(AEB_WARNING_PIN, OUTPUT);
-   12  1        setPinDirectionP2(AEB_INPUT_PIN, INPUT);
-   13  1        // don't need to set pin dir of P5 pins
-   14  1        // as they are read-only
-   15  1      }
-   16         
-   17         unsigned int aebRead(void)
-   18         {
-   19  1        return readPinP2(AEB_INPUT_PIN);
-   20  1      }
-   21         
-   22         void aebWarning(void)
-   23         {
-   24  1        setPinP2(11);
-   25  1      }
+    9         
+   10         void aebInit(void)
+   11         {
+   12  1        setPinDirectionP2(AEB_WARNING_PIN, OUTPUT);
+   13  1        setPinDirectionP2(AEB_INPUT_PIN, INPUT);
+   14  1        // don't need to set pin dir of P5 pins
+   15  1        // as they are read-only
+   16  1      
+   17  1        // setup timer T3 (to be used as a 4 second timer)
+   18  1        timerT3Config(GPT_1_PRESC_1024, TIMER_MODE, COUNT_DOWN);
+   19  1      }
+   20         
+   21         unsigned int aebRead(void)
+   22         {
+   23  1        return readPinP2(AEB_INPUT_PIN);
+   24  1      }
+   25         
+   26         void aebWarning(void)
+   27         {
+   28  1        setPinP2(11);
+   29  1      
+   30  1        // at 20MHz, the longest time we could wait on GPT1 is 3.36 seconds
+   31  1        timerT3StartS(4);
+   32  1      
+   33  1      }
 
 
 MODULE INFORMATION:   INITIALIZED  UNINITIALIZED
-  CODE SIZE        =          34     --------
+  CODE SIZE        =          50     --------
   NEAR-CONST SIZE  =    --------     --------
   FAR-CONST SIZE   =    --------     --------
   HUGE-CONST SIZE  =    --------     --------
