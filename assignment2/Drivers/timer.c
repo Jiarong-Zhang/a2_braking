@@ -1,14 +1,15 @@
 // a1793769 - Emily Zhang
 /**
-Function implementation for operations related to the C167 timers
+ * File name: timer.h
+ * Description: Function implementation for operations related to the C167 timers
 **/
 
-/* Include required submodules */
+/********** Include required submodules**********/
+
 #include "timer.h"
 #include "Source/platform.h"
 
 // global run counter
-
 unsigned int run_counter = 0;
 
 void T3_interrupt (void) interrupt 0x23
@@ -16,6 +17,7 @@ void T3_interrupt (void) interrupt 0x23
 	T3R = 0;
 	run_counter++;
 }
+
 /********** Function Definitions **********/
 
 void timerT6Config(unsigned int prescaler, unsigned int mode, unsigned int direction)

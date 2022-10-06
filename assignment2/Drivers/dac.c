@@ -1,14 +1,18 @@
 // a1793769 - Emily Zhang
 /**
-Function implementations for operations related to the DAC 
+ * File name: dac.c
+ * Description: Function implementations for operations related to the DAC 
 **/
+
+/********** Include required submodules**********/
 
 #include <reg167.h>
 #include "dac.h"
 
 /********** Macros **********/
 
-/********** Function Declearations **********/
+
+/********** Function Definitions **********/
 
 void dacInit(void)
 {

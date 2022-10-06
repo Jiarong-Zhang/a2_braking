@@ -1,15 +1,19 @@
 // a1793769 - Emily Zhang
 /**
-Function declarations for operations related to the AEB 
+ * File name: aeb.h
+ * Description: Function declarations for operations related to the AEB 
 **/
+
 #ifndef AEB_H
 #define AEB_H
 
-/* Include required submodules */
+/********** Include required submodules**********/
+
 #include <reg167.h>
 #include "gpio.h"
 
 /********** Macros **********/
+
 #define AEB_WARNING_PIN 	11U
 #define AEB_INPUT_PIN		15U
 #define AEB_WARNING_TIME	4U	// in seconds

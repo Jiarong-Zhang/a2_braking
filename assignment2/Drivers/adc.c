@@ -1,9 +1,14 @@
 // a1793769 - Emily Zhang
 /**
-Function implementations for operations related to the C167 ADC
+ * File name adc.c
+ * Description: Function implementations for operations related to the C167 ADC
 **/
 
+/********** Include required submodules**********/
+
 #include "Drivers/adc.h"
+
+/********** Function Definitions **********/
 
 void adcGpioInit(void)
 {
@@ -13,7 +18,6 @@ void adcGpioInit(void)
 
 void adcReset(void)
 {
-	// TBD
 	ADCON = 0x0000;
 }
 

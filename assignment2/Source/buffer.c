@@ -1,11 +1,13 @@
 // a1793769 - Emily Zhang
 /**
-Implementation for operations related to the buffer 
+ * File name buffer.c
+ * Description: Implementation for operations related to the buffer 
 **/
 
+/********** Include required submodules**********/
 #include "buffer.h"
 
-/********** Function Declearations **********/
+/********** Function Definitions **********/
 
 void pop_front(float* buffer, int buffer_size)
 {

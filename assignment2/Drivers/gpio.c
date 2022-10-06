@@ -1,10 +1,14 @@
 // a1793769 - Emily Zhang
 /**
-Implementation for GPIO functions
+ * File name: gpio.c
+ * Description: Implementation for GPIO functions
 **/
 
-/* Include required submodules */
+/********** Include required submodules**********/
+
 #include "Drivers/gpio.h"
+
+/********** Function Definitions **********/
 
 // Set a P2 pin's I/O direcion 
 void setPinDirectionP2(unsigned int pin_num, unsigned int direction)

@@ -1,12 +1,15 @@
 // a1793769 - Emily Zhang
 /**
-Function declarations for operations related C167 interrupts 
+ * File name interrupt.c
+ * Description: Function declarations for operations related C167 interrupts 
 **/
 
-/* Include required submodules */
+/********** Include required submodules**********/
+
 #include "interrupt.h"
 
 /********** Function Definitions **********/
+
 void interruptEnable(void)
 {
 	IEN = 1;

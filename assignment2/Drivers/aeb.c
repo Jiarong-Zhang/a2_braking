@@ -1,15 +1,18 @@
 // a1793769 - Emily Zhang
 /**
-Implementation for AEB functions
+ * File name: adc.h
+ * Description: Implementation for AEB functions
 **/
 
-/* Include required submodules */
+/********** Include required submodules**********/
+
 #include "Drivers/aeb.h"
 #include "Drivers/gpio.h"
 #include "Drivers/timer.h"
 #include "Drivers/dac.h"
 
 /********** Function Definitions **********/
+
 void aebInit(void)
 {
 	setPinDirectionP2(AEB_WARNING_PIN, OUTPUT);

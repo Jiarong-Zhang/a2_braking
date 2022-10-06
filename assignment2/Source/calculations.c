@@ -1,10 +1,12 @@
 // a1793769 - Emily Zhang
 /**
-Implementation for operations that perfrom the main
+ * File name calculations.c
+ * Description: Implementation for operations that perfrom the main
 torque & braking distance calculations 
 **/
 
-/* Include required submodules */
+/********** Include required submodules**********/
+
 #include "calculations.h"
 
 /********** Function Definitions **********/

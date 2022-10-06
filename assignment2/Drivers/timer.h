@@ -1,11 +1,13 @@
 // a1793769 - Emily Zhang
 /**
-Function declarations for operations related to the C167 timers
+ * File name: timer.h
+ * Description: Function declarations for operations related to the C167 timers
 **/
 #ifndef TIMER_H
 #define TIMER_H
 
-/* Include required submodules */
+/********** Include required submodules**********/
+
 #include <reg167.h>
 #include "gpio.h"
 
@@ -67,6 +69,10 @@ Function declarations for operations related to the C167 timers
 //
 void timerT6Config(unsigned int prescaler, unsigned int mode, unsigned int direction);
 
+// Enable T6 timer interrupt
+// 		Takes no argument
+//		Returns nothing
+//
 void timerT6EnableInterrupt(void);
 
 // Start timer T6 for the given time
@@ -87,6 +93,5 @@ void timerT3Config(unsigned int prescaler, unsigned int mode, unsigned int direc
 //		Returns nothing
 //
 void timerT3StartS(unsigned int sec);
-
 
 #endif

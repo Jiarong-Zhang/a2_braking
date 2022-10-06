@@ -1,13 +1,15 @@
 // a1793769 - Emily Zhang
 /**
-Implementation of encoder calculations
+ * File name encoder.c
+ * Description: Implementation of encoder calculations
 **/
 
-/* Include required submodules */
+/********** Include required submodules**********/
+
 #include <reg167.h>
 #include "encoder.h"
 
-/********** Function Declearations **********/
+/********** Include required submodules**********/
 
 float encoderGetVelocity(void)
 {

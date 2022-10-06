@@ -1,15 +1,18 @@
 // a1793769 - Emily Zhang
 /**
-Function declarations for operations related to the encoder 
+ * File name encoder.h
+ * Description: Function declarations for operations related to the encoder 
 **/
 #ifndef ENCODER_H
 #define ENCODER_H
 
-/* Include required submodules */
+/********** Include required submodules**********/
+
 #include <reg167.h>
 #include "Drivers/adc.h"
 
 /********** Macros **********/
+
 // Encoder pin
 #define ENCODER_PIN 		1U
 

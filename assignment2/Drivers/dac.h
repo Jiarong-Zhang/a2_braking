@@ -1,9 +1,13 @@
 // a1793769 - Emily Zhang
 /**
-Function declarations for operations related to the DAC 
+ * File name: dac.h.h
+ * Description: Function declarations for operations related to the DAC 
 **/
+
 #ifndef DAC_H
 #define DAC_H
+
+/********** Include required submodules**********/
 
 #include <reg167.h>
 #include "gpio.h"
@@ -19,11 +23,24 @@ Function declarations for operations related to the DAC
 
 /********** Function Declearations **********/
 
+// Initialise P2.0 to P2.7 which are connected to 
+// the DAC
+// 		Takes no arguments
+//		Returns nothing
+//
 void dacInit(void);
 
+// Writes given value to the DAC 
+// the DAC
+// 		Takes unsigned int input
+//		Returns nothing
+//
 void dacWrite(unsigned int input);
 
+// Reset DAC output to 0x00
+// 		Takes nno arguments
+//		Returns nothing
+//
 void dacReset(void);
-
 
 #endif

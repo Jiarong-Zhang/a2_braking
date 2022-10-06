@@ -1,10 +1,12 @@
 // a1793769 - Emily Zhang
-/*
-Main function that controls the flow of the entire
-subsystem
-*/
+/**
+ * File name main.c
+ * Description: Main function that controls the flow of the entire
+	subsystem
+**/
 
-/* Include required submodules */
+/********** Include required submodules**********/
+
 #include "Drivers/aeb.h"
 #include "Drivers/adc.h"
 #include "Drivers/dac.h"
@@ -17,8 +19,11 @@ subsystem
 #include <reg167.h>
 
 /********** Extern Definitions **********/
+
 volatile unsigned int g_wait_flag = 0;
 volatile float g_dist_buffer[BUFFER_SIZE] = {0};
+
+/********** Main **********/
 
 void main(void)
 {

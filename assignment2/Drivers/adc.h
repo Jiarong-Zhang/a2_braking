@@ -1,23 +1,28 @@
 // a1793769 - Emily Zhang
 /**
-Function declarations for operations related to the C167 ADC
+ * File name: adc.h
+ * Description: Function declarations for operations related to the C167 ADC
 **/
+
 #ifndef ADC_H
 #define ADC_H
+
+/********** Include required submodules**********/
 
 #include <reg167.h>
 #include "gpio.h"
 
 /********** Macros **********/
+
 // Pin numbers of the encoder and lidar
-#define ENCODER_PIN  1U
-#define LIDAR_PIN	 2U
+#define ENCODER_PIN 	 1U
+#define LIDAR_PIN 		 2U
 
 // ADC mode selection
-#define FIXED_SINGLE 0U
-#define FIXED_CONTIN 1U
-#define AUTO_SINGLE  2U
-#define AUTO_CONTIN  3U
+#define FIXED_SINGLE 	0U
+#define FIXED_CONTIN 	1U
+#define AUTO_SINGLE  	2U
+#define AUTO_CONTIN  	3U
 
 // ADC start control
 #define ADC_OFF  		 0U
@@ -55,15 +60,17 @@ void adcGpioInit(void);
 //
 void adcReset(void);
 
-
+// Check if the ADC is busy
+// 		Takes no arguments
+//		Returns 1 if busy, 0 if not busy
+//
 unsigned int adcCheckBusy(void);
 
 // Start a conversion on the encoder's channel
 // and get the result
-// 		Takes channel num and conversion mode
+// 		Takes unsigned int channel num, unsigned int conversion mode
 //		Returns result of AD conversion
 //
 float adcRead(unsigned int channel, unsigned int mode);
-
 
 #endif

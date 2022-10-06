@@ -1,6 +1,7 @@
 // a1793769 - Emily Zhang
 /**
-Function declarations for operations related to the buffer.
+ * * File name buffer.c
+ * Description: Function declarations for operations related to the buffer.
 pop_front and push_back and meant to be used in conjunction!!
 **/
 #ifndef BUFFER_H

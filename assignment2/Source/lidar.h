@@ -1,11 +1,13 @@
 // a1793769 - Emily Zhang
 /**
-Function declarations for operations related to the LIDAR 
+ * File name lidar.c
+ * Description: Function declarations for operations related to the LIDAR 
 **/
+
 #ifndef LIDAR_H
 #define LIDAR_H
 
-/* Include required submodules */
+/********** Include required submodules**********/
 #include <reg167.h>
 #include "buffer.h"
 #include "Drivers/adc.h"
@@ -14,6 +16,7 @@ Function declarations for operations related to the LIDAR
 #include "platform.h"
 
 /********** Macros **********/
+
 // LIDAR pin
 #define LIDAR_PIN	 		2U
 
@@ -22,12 +25,23 @@ Function declarations for operations related to the LIDAR
 
 /********** Function Declearations **********/
 
+// Initialise the s timer used by this module
+// 		Takes no arguments
+//		Returns nothing
+//
 void lidarTimerInit(void);
 
-void lidarUpdateBuffer(void);
-
+// Returns latest LIDAR measurement after
+// interpolation
+// 		Takes no arguments
+//		Returns float result
+//
 float lidarGetResult(void);
 
-//float* lidarSetupBuffer(void);
+// Update global distances buffer
+// 		Takes no arguments
+//		Returns nothing
+//
+void lidarUpdateBuffer(void);
 
 #endif
