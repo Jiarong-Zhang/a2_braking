@@ -1,4 +1,4 @@
-C166 COMPILER V7.57.0, MAIN                                                                10/06/2022 23:39:27 PAGE 1   
+C166 COMPILER V7.57.0, MAIN                                                                10/07/2022 00:23:17 PAGE 1   
 
 
 C166 COMPILER V7.57.0, COMPILATION OF MODULE MAIN
@@ -34,39 +34,36 @@ COMPILER INVOKED BY: D:\Keil\C166\BIN\C166.EXE Source\main.c BROWSE MOD167 DEBUG
    24         {
    25  1        volatile unsigned int result = 0;
    26  1        volatile unsigned int ready_flag = 0;
-   27  1        volatile unsigned int braking_torque = 1000;
-   28  1        
-   29  1        interruptEnable();
-   30  1        g_wait_flag = 0;
-   31  1        aebInit(); 
-   32  1        dacInit();
-   33  1        adcGpioInit();
-   34  1        lidarTimerInit();
-   35  1        
-   36  1        dacWrite((unsigned int)braking_torque * DAC_SCALE_FACTOR);
-   37  1        
-   38  1        while(1)
-   39  1        {
-   40  2          ready_flag = aebRead();
-   41  2          if (ready_flag == 1)
-   42  2          {
-   43  3            if (g_wait_flag == 0)   // only update if flag is lowered
-   44  3            {
-   45  4              lidarUpdateBuffer();  // update buffer
-   46  4            }
-   47  3            calculationsHandler();
-   48  3            result = (P2 & 0xFF);
-   49  3          }
-   50  2        }
-   51  1      }
+   27  1        
+   28  1        interruptEnable();
+   29  1        g_wait_flag = 0;
+   30  1        aebInit(); 
+   31  1        dacInit();
+   32  1        adcGpioInit();
+   33  1        lidarTimerInit();
+   34  1      
+   35  1        while(1)
+   36  1        {
+   37  2          ready_flag = aebRead();
+   38  2          if (ready_flag == 1)
+   39  2          {
+   40  3            if (g_wait_flag == 0)   // only update if flag is lowered
+   41  3            {
+   42  4              lidarUpdateBuffer();  // update buffer
+   43  4            }
+   44  3            calculationsHandler();
+   45  3            result = (P2 & 0xFF);
+   46  3          }
+   47  2        }
+   48  1      }
 
 
 MODULE INFORMATION:   INITIALIZED  UNINITIALIZED
-C166 COMPILER V7.57.0, MAIN                                                                10/06/2022 23:39:27 PAGE 2   
-
-  CODE SIZE        =         118     --------
+  CODE SIZE        =          76     --------
   NEAR-CONST SIZE  =    --------     --------
   FAR-CONST SIZE   =    --------     --------
+C166 COMPILER V7.57.0, MAIN                                                                10/07/2022 00:23:17 PAGE 2   
+
   HUGE-CONST SIZE  =    --------     --------
   XHUGE-CONST SIZE =    --------     --------
   NEAR-DATA SIZE   =          14     --------

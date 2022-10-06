@@ -214,7 +214,7 @@
         <SetRegEntry>
           <Number>0</Number>
           <Key>DLGD167</Key>
-          <Name>(103=120,121,393,539,0)(3005=-1,-1,-1,-1,0)(108=-1,-1,-1,-1,0)(3004=-1,-1,-1,-1,0)(100=-1,-1,-1,-1,0)(102=1499,692,1833,1033,1)(106=-1,-1,-1,-1,0)(82=-1,-1,-1,-1,0)(83=225,186,633,327,0)(84=1204,597,1552,764,1)(85=-1,-1,-1,-1,0)(86=-1,-1,-1,-1,0)(3009=1207,433,1564,574,1)(88=-1,-1,-1,-1,0)(89=-1,-1,-1,-1,0)(90=-1,-1,-1,-1,0)(93=-1,-1,-1,-1,0)(94=979,376,1211,708,1)(95=-1,-1,-1,-1,0)(96=-1,-1,-1,-1,0)(97=1423,409,1655,767,1)(91=-1,-1,-1,-1,0)(92=-1,-1,-1,-1,0)(101=-1,-1,-1,-1,0)(98=-1,-1,-1,-1,0)(105=-1,-1,-1,-1,0)(104=-1,-1,-1,-1,0)(80=-1,-1,-1,-1,0)(3007=-1,-1,-1,-1,0)(3000=-1,-1,-1,-1,0)(3012=165,121,483,297,0)</Name>
+          <Name>(103=120,121,393,539,0)(3005=-1,-1,-1,-1,0)(108=-1,-1,-1,-1,0)(3004=-1,-1,-1,-1,0)(100=-1,-1,-1,-1,0)(102=1499,692,1833,1033,1)(106=-1,-1,-1,-1,0)(82=-1,-1,-1,-1,0)(83=225,186,633,327,0)(84=1079,709,1427,876,1)(85=-1,-1,-1,-1,0)(86=-1,-1,-1,-1,0)(3009=1207,433,1564,574,1)(88=-1,-1,-1,-1,0)(89=-1,-1,-1,-1,0)(90=-1,-1,-1,-1,0)(93=-1,-1,-1,-1,0)(94=979,376,1211,708,1)(95=-1,-1,-1,-1,0)(96=-1,-1,-1,-1,0)(97=1244,374,1476,732,1)(91=-1,-1,-1,-1,0)(92=-1,-1,-1,-1,0)(101=-1,-1,-1,-1,0)(98=-1,-1,-1,-1,0)(105=-1,-1,-1,-1,0)(104=-1,-1,-1,-1,0)(80=-1,-1,-1,-1,0)(3007=-1,-1,-1,-1,0)(3000=-1,-1,-1,-1,0)(3012=165,121,483,297,0)</Name>
         </SetRegEntry>
         <SetRegEntry>
           <Number>0</Number>
@@ -222,7 +222,56 @@
           <Name>200,50,700</Name>
         </SetRegEntry>
       </TargetDriverDllRegistry>
-      <Breakpoint/>
+      <Breakpoint>
+        <Bp>
+          <Number>0</Number>
+          <Type>0</Type>
+          <LineNumber>42</LineNumber>
+          <EnabledFlag>1</EnabledFlag>
+          <Address>68464</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>1</BreakIfRCount>
+          <Filename>Source\main.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression>\\a1793769\MAIN\42</Expression>
+        </Bp>
+        <Bp>
+          <Number>1</Number>
+          <Type>0</Type>
+          <LineNumber>86</LineNumber>
+          <EnabledFlag>1</EnabledFlag>
+          <Address>68088</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>1</BreakIfRCount>
+          <Filename>Source\lidar.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression>\\a1793769\LIDAR\86</Expression>
+        </Bp>
+        <Bp>
+          <Number>2</Number>
+          <Type>0</Type>
+          <LineNumber>81</LineNumber>
+          <EnabledFlag>1</EnabledFlag>
+          <Address>68064</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>1</BreakIfRCount>
+          <Filename>Source\lidar.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression>\\a1793769\LIDAR\81</Expression>
+        </Bp>
+      </Breakpoint>
       <WatchWindow1>
         <Ww>
           <count>0</count>
