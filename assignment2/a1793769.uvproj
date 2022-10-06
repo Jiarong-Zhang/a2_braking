@@ -346,6 +346,11 @@
               <FileType>5</FileType>
               <FilePath>.\Source\calculations.h</FilePath>
             </File>
+            <File>
+              <FileName>platform.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Source\platform.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -402,14 +407,14 @@
               <FilePath>.\Drivers\timer.h</FilePath>
             </File>
             <File>
-              <FileName>platform.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Drivers\platform.h</FilePath>
-            </File>
-            <File>
               <FileName>dac.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Drivers\dac.c</FilePath>
+            </File>
+            <File>
+              <FileName>interrupt.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Drivers\interrupt.c</FilePath>
             </File>
           </Files>
         </Group>

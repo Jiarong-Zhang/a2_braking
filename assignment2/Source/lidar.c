@@ -3,14 +3,10 @@
 Function implementation for operations related to the LIDAR 
 **/
 
-#include <reg167.h>
-#include "Drivers/adc.h"
-#include "Drivers/timer.h"
-#include "Drivers/platform.h"
+/* Include required submodules */
 #include "lidar.h"
-#include "buffer.h"
 
-/********** Function Declearations **********/
+/********** Function Definitions **********/
 
 /*void lidarGetDistances (float* array, unsigned int array_size)
 {
@@ -57,6 +53,12 @@ void lidarTimerInit(void)
 {
 	timerT6Config(GPT_2_PRESC_4, TIMER_MODE, COUNT_DOWN);
 	T6IC = 0x0044; // set up timer 6interrupt config
+}
+
+void lidarT6Interrupt (void) interrupt 0x26
+{
+	T6R = 0;	// stop timer T6
+	wait_flag = 0;
 }
 
 float lidarGetResult(void)

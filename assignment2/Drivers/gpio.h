@@ -5,6 +5,7 @@ Declarations for GPIO functions, for both P2 and P5
 #ifndef GPIO_H
 #define GPIO_H
 
+/* Include required submodules */
 #include <reg167.h>
 
 /********** Macros **********/

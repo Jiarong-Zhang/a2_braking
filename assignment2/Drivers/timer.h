@@ -5,6 +5,7 @@ Function declarations for operations related to the C167 timers
 #ifndef TIMER_H
 #define TIMER_H
 
+/* Include required submodules */
 #include <reg167.h>
 #include "gpio.h"
 

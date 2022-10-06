@@ -2,7 +2,8 @@
 /**
 Implementation for GPIO functions
 **/
-#include <reg167.h>
+
+/* Include required submodules */
 #include "Drivers/gpio.h"
 
 // Set a P2 pin's I/O direcion 

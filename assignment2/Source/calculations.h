@@ -3,6 +3,8 @@
 Function declarations for operations that perfrom the main
 torque & braking distance calculations 
 **/
+
+/* Include required submodules */
 #ifndef CALCULATIONS_H
 #define CALCULATIONS_H
 
@@ -11,6 +13,7 @@ torque & braking distance calculations
 #include "Drivers/dac.h"
 #include "encoder.h"
 #include "lidar.h"
+#include "platform.h"
 
 
 /********** Macros **********/

@@ -3,6 +3,7 @@
 Implementation of encoder calculations
 **/
 
+/* Include required submodules */
 #include <reg167.h>
 #include "encoder.h"
 

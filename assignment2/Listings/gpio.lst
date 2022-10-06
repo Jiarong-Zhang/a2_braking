@@ -1,4 +1,4 @@
-C166 COMPILER V7.57.0, GPIO                                                                10/06/2022 02:05:37 PAGE 1   
+C166 COMPILER V7.57.0, GPIO                                                                10/06/2022 13:26:17 PAGE 1   
 
 
 C166 COMPILER V7.57.0, COMPILATION OF MODULE GPIO
@@ -12,87 +12,88 @@ COMPILER INVOKED BY: D:\Keil\C166\BIN\C166.EXE Drivers\gpio.c BROWSE MOD167 DEBU
     2         /**
     3         Implementation for GPIO functions
     4         **/
-    5         #include <reg167.h>
-    6         #include "Drivers/gpio.h"
-    7         
-    8         // Set a P2 pin's I/O direcion 
-    9         void setPinDirectionP2(unsigned int pin_num, unsigned int direction)
-   10         {
-   11  1        if (direction == INPUT)
-   12  1        {
-   13  2          // reset to 0
-   14  2          DP2 &= ~(1 << pin_num);
-   15  2        }
-   16  1        else if (direction == OUTPUT)
-   17  1        {
-   18  2          // set to 1
-   19  2          DP2 |= (1 << pin_num);
-   20  2        }
-   21  1      }
-   22         
-   23         // Read a pin on P2
-   24         unsigned int readPinP2(unsigned int port_pin)
-   25         {
-   26  1        if (P2 & (1 << port_pin))
-   27  1        {
-   28  2          return 1;
-   29  2        }
-   30  1        else
-   31  1        {
-   32  2          return 0;
-   33  2        }
-   34  1      }
-   35         
-   36         // Set a pin on P2 to 1
-   37         // (ony works for output pins!)
-   38         void setPinP2(unsigned int pin_num)
-   39         {
-   40  1        // Can only set pin if it's an output
-   41  1        if (DP2 & (1 << pin_num))
-   42  1        {
-   43  2          P2 |= (1 << pin_num);
-   44  2        } 
-   45  1      }
-   46         
-   47         // Clear a pin on P2 to 1
-   48         // (ony works for output pins!)
-   49         void clrPinP2(unsigned int pin_num)
-   50         {
-   51  1        // Can only set pin if it's an output
-   52  1        if (DP2 & (1 << pin_num))
-   53  1        {
-   54  2          P2 &= ~(1 << pin_num);
-C166 COMPILER V7.57.0, GPIO                                                                10/06/2022 02:05:37 PAGE 2   
+    5         
+    6         /* Include required submodules */
+    7         #include "Drivers/gpio.h"
+    8         
+    9         // Set a P2 pin's I/O direcion 
+   10         void setPinDirectionP2(unsigned int pin_num, unsigned int direction)
+   11         {
+   12  1        if (direction == INPUT)
+   13  1        {
+   14  2          // reset to 0
+   15  2          DP2 &= ~(1 << pin_num);
+   16  2        }
+   17  1        else if (direction == OUTPUT)
+   18  1        {
+   19  2          // set to 1
+   20  2          DP2 |= (1 << pin_num);
+   21  2        }
+   22  1      }
+   23         
+   24         // Read a pin on P2
+   25         unsigned int readPinP2(unsigned int port_pin)
+   26         {
+   27  1        if (P2 & (1 << port_pin))
+   28  1        {
+   29  2          return 1;
+   30  2        }
+   31  1        else
+   32  1        {
+   33  2          return 0;
+   34  2        }
+   35  1      }
+   36         
+   37         // Set a pin on P2 to 1
+   38         // (ony works for output pins!)
+   39         void setPinP2(unsigned int pin_num)
+   40         {
+   41  1        // Can only set pin if it's an output
+   42  1        if (DP2 & (1 << pin_num))
+   43  1        {
+   44  2          P2 |= (1 << pin_num);
+   45  2        } 
+   46  1      }
+   47         
+   48         // Clear a pin on P2 to 1
+   49         // (ony works for output pins!)
+   50         void clrPinP2(unsigned int pin_num)
+   51         {
+   52  1        // Can only set pin if it's an output
+   53  1        if (DP2 & (1 << pin_num))
+   54  1        {
+C166 COMPILER V7.57.0, GPIO                                                                10/06/2022 13:26:17 PAGE 2   
 
-   55  2        } 
-   56  1      }
-   57         
-   58         // Read a pin on P5
-   59         unsigned int readPinP5(unsigned int port_pin)
-   60         {
-   61  1        if (P5 & (1 << port_pin))
-   62  1        {
-   63  2          return 1;
-   64  2        }
-   65  1        else
-   66  1        {
-   67  2          return 0;
-   68  2        }
-   69  1        
-   70  1      }
-   71         
-   72         // Config P5 digital input control
-   73         void configPinP5(unsigned int pin_num, unsigned int value)
-   74         {
-   75  1        if (value == 1)
-   76  1        {
-   77  2          P5DIDIS |= (1 << pin_num);
-   78  2        }
-   79  1        else if (value == 0)
-   80  1        {
-   81  2          P5DIDIS &= ~(1 << pin_num);
-   82  2        }
-   83  1      }
+   55  2          P2 &= ~(1 << pin_num);
+   56  2        } 
+   57  1      }
+   58         
+   59         // Read a pin on P5
+   60         unsigned int readPinP5(unsigned int port_pin)
+   61         {
+   62  1        if (P5 & (1 << port_pin))
+   63  1        {
+   64  2          return 1;
+   65  2        }
+   66  1        else
+   67  1        {
+   68  2          return 0;
+   69  2        }
+   70  1        
+   71  1      }
+   72         
+   73         // Config P5 digital input control
+   74         void configPinP5(unsigned int pin_num, unsigned int value)
+   75         {
+   76  1        if (value == 1)
+   77  1        {
+   78  2          P5DIDIS |= (1 << pin_num);
+   79  2        }
+   80  1        else if (value == 0)
+   81  1        {
+   82  2          P5DIDIS &= ~(1 << pin_num);
+   83  2        }
+   84  1      }
 
 
 MODULE INFORMATION:   INITIALIZED  UNINITIALIZED

@@ -1,4 +1,4 @@
-C166 COMPILER V7.57.0, LIDAR                                                               10/06/2022 12:11:33 PAGE 1   
+C166 COMPILER V7.57.0, LIDAR                                                               10/06/2022 13:26:33 PAGE 1   
 
 
 C166 COMPILER V7.57.0, COMPILATION OF MODULE LIDAR
@@ -13,86 +13,88 @@ COMPILER INVOKED BY: D:\Keil\C166\BIN\C166.EXE Source\lidar.c BROWSE MOD167 DEBU
     3         Function implementation for operations related to the LIDAR 
     4         **/
     5         
-    6         #include <reg167.h>
-    7         #include "Drivers/adc.h"
-    8         #include "Drivers/timer.h"
-    9         #include "Drivers/platform.h"
-   10         #include "lidar.h"
-   11         #include "buffer.h"
-   12         
-   13         /********** Function Declearations **********/
-   14         
-   15         /*void lidarGetDistances (float* array, unsigned int array_size)
-   16         {
-   17           float raw_lidar_output = 0;
-   18           float interpolated_result = 0; 
-   19           unsigned int index = 0;
-   20           unsigned int toggle = 0;
-   21         
-   22           // collect first result
-   23           raw_lidar_output = adcRead(LIDAR_PIN, FIXED_SINGLE);
-   24           interpolated_result = (raw_lidar_output * LIDAR_STEP_SIZE) + 5;
-   25           array[index] = interpolated_result;
-   26           index++;
-   27         
-   28           // if array not full yet
-   29           while (index < (array_size))
-   30           {
-   31             // wait 10ms before collect next distance
-   32             timerT6StartMS(10);
-   33             while(T6OTL == toggle){}
-   34             toggle = !toggle;
-   35             T6R = 0;
+    6         /* Include required submodules */
+    7         #include "lidar.h"
+    8         
+    9         /********** Function Definitions **********/
+   10         
+   11         /*void lidarGetDistances (float* array, unsigned int array_size)
+   12         {
+   13           float raw_lidar_output = 0;
+   14           float interpolated_result = 0; 
+   15           unsigned int index = 0;
+   16           unsigned int toggle = 0;
+   17         
+   18           // collect first result
+   19           raw_lidar_output = adcRead(LIDAR_PIN, FIXED_SINGLE);
+   20           interpolated_result = (raw_lidar_output * LIDAR_STEP_SIZE) + 5;
+   21           array[index] = interpolated_result;
+   22           index++;
+   23         
+   24           // if array not full yet
+   25           while (index < (array_size))
+   26           {
+   27             // wait 10ms before collect next distance
+   28             timerT6StartMS(10);
+   29             while(T6OTL == toggle){}
+   30             toggle = !toggle;
+   31             T6R = 0;
+   32         
+   33             // collect/calculate lidar distance
+   34             raw_lidar_output = adcRead(LIDAR_PIN, FIXED_SINGLE);
+   35             interpolated_result = (raw_lidar_output * LIDAR_STEP_SIZE) + 5;
    36         
-   37             // collect/calculate lidar distance
-   38             raw_lidar_output = adcRead(LIDAR_PIN, FIXED_SINGLE);
-   39             interpolated_result = (raw_lidar_output * LIDAR_STEP_SIZE) + 5;
-   40         
-   41             // store distance
-   42             array[index] = interpolated_result;
-   43             index++;
-   44           }
-   45         
-   46           return;
-   47         }*/
+   37             // store distance
+   38             array[index] = interpolated_result;
+   39             index++;
+   40           }
+   41         
+   42           return;
+   43         }*/
+   44         
+   45         /*float* lidarSetupBuffer(void)
+   46         {
+   47           float distance_buffer[BUFFER_SIZE] = {0};
    48         
-   49         /*float* lidarSetupBuffer(void)
-   50         {
-   51           float distance_buffer[BUFFER_SIZE] = {0};
-   52         
-   53           return &distance_buffer;
-   54         }*/
-C166 COMPILER V7.57.0, LIDAR                                                               10/06/2022 12:11:33 PAGE 2   
+   49           return &distance_buffer;
+   50         }*/
+   51         
+   52         void lidarTimerInit(void)
+   53         {
+   54  1        timerT6Config(GPT_2_PRESC_4, TIMER_MODE, COUNT_DOWN);
+C166 COMPILER V7.57.0, LIDAR                                                               10/06/2022 13:26:33 PAGE 2   
 
-   55         
-   56         void lidarTimerInit(void)
-   57         {
-   58  1        timerT6Config(GPT_2_PRESC_4, TIMER_MODE, COUNT_DOWN);
-   59  1        T6IC = 0x0044; // set up timer 6interrupt config
-   60  1      }
-   61         
-   62         float lidarGetResult(void)
-   63         {
-   64  1        float raw_lidar_output = 0;
-   65  1        float interpolated_result = 0; 
-   66  1      
-   67  1        // collect and return result
-   68  1        raw_lidar_output = adcRead(LIDAR_PIN, FIXED_SINGLE);
-   69  1        interpolated_result = (raw_lidar_output * LIDAR_STEP_SIZE) + 5;
-   70  1        
-   71  1        return interpolated_result;
-   72  1      }
-   73         
-   74         void lidarUpdateBuffer(float* buffer)
-   75         {
-   76  1        float lidar_result = lidarGetResult();
-   77  1        pop_front(buffer, BUFFER_SIZE);
-   78  1        push_back(buffer, BUFFER_SIZE, lidar_result);
-   79  1      }
+   55  1        T6IC = 0x0044; // set up timer 6interrupt config
+   56  1      }
+   57         
+   58         void lidarT6Interrupt (void) interrupt 0x26
+   59         {
+   60  1        T6R = 0;  // stop timer T6
+   61  1        wait_flag = 0;
+   62  1      }
+   63         
+   64         float lidarGetResult(void)
+   65         {
+   66  1        float raw_lidar_output = 0;
+   67  1        float interpolated_result = 0; 
+   68  1      
+   69  1        // collect and return result
+   70  1        raw_lidar_output = adcRead(LIDAR_PIN, FIXED_SINGLE);
+   71  1        interpolated_result = (raw_lidar_output * LIDAR_STEP_SIZE) + 5;
+   72  1        
+   73  1        return interpolated_result;
+   74  1      }
+   75         
+   76         void lidarUpdateBuffer(float* buffer)
+   77         {
+   78  1        float lidar_result = lidarGetResult();
+   79  1        pop_front(buffer, BUFFER_SIZE);
+   80  1        push_back(buffer, BUFFER_SIZE, lidar_result);
+   81  1      }
 
 
 MODULE INFORMATION:   INITIALIZED  UNINITIALIZED
-  CODE SIZE        =         130     --------
+  CODE SIZE        =         144     --------
   NEAR-CONST SIZE  =    --------     --------
   FAR-CONST SIZE   =    --------     --------
   HUGE-CONST SIZE  =    --------     --------

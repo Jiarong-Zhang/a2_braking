@@ -4,10 +4,12 @@ Implementation for operations that perfrom the main
 torque & braking distance calculations 
 **/
 
+/* Include required submodules */
 #include <reg167.h>
+#include "platform.h"
 #include "calculations.h"
 
-/********** Function Declearations **********/
+/********** Function Definitions **********/
 
 // v = Rw
 float calculateVehicleLinVel(float wheel_ang_vel)

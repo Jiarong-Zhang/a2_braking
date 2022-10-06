@@ -9,7 +9,10 @@ Function declarations for operations related to the xxx
 
 #define BUFFER_SIZE 3
 
-/********** Function Declearations **********/
+/* Extern Definitions */
+extern volatile unsigned int wait_flag;
+
+/********** Function Definitions **********/
 
 
 #endif

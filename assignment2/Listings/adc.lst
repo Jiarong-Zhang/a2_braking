@@ -1,4 +1,4 @@
-C166 COMPILER V7.57.0, ADC                                                                 10/05/2022 20:35:47 PAGE 1   
+C166 COMPILER V7.57.0, ADC                                                                 10/06/2022 13:26:17 PAGE 1   
 
 
 C166 COMPILER V7.57.0, COMPILATION OF MODULE ADC
@@ -62,7 +62,7 @@ COMPILER INVOKED BY: D:\Keil\C166\BIN\C166.EXE Drivers\adc.c BROWSE MOD167 DEBUG
    52  1      
    53  1        return result;
    54  1      }
-C166 COMPILER V7.57.0, ADC                                                                 10/05/2022 20:35:47 PAGE 2   
+C166 COMPILER V7.57.0, ADC                                                                 10/06/2022 13:26:17 PAGE 2   
 
 
 

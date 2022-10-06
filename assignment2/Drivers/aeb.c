@@ -2,11 +2,14 @@
 /**
 Implementation for AEB functions
 **/
+
+/* Include required submodules */
 #include "Drivers/aeb.h"
 #include "Drivers/gpio.h"
 #include "Drivers/timer.h"
+#include "Drivers/dac.h"
 
-
+/********** Function Definitions **********/
 void aebInit(void)
 {
 	setPinDirectionP2(AEB_WARNING_PIN, OUTPUT);
@@ -25,9 +28,12 @@ unsigned int aebRead(void)
 
 void aebWarning(void)
 {
-	setPinP2(11);
+	setPinP2(AEB_WARNING_PIN);
+	dacReset();
 
-	// at 20MHz, the longest time we could wait on GPT1 is 3.36 seconds
-	timerT3StartS(4);
+	timerT3StartS(AEB_WARNING_TIME);
+	while (T3R){}	 // wait to finish
+
+	clrPinP2(AEB_WARNING_PIN);
 
 }

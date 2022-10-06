@@ -5,6 +5,7 @@ Function declarations for operations related to the encoder
 #ifndef ENCODER_H
 #define ENCODER_H
 
+/* Include required submodules */
 #include <reg167.h>
 #include "Drivers/adc.h"
 
@@ -14,7 +15,7 @@ Function declarations for operations related to the encoder
 
 #define ENCODER_STEP_SIZE 	0.1074f // 110/2^10 = 0.1074 (4 d.p.)
 
-/********** Function Declearations **********/
+/********** Function Definitions **********/
 
 // Calculates the current angular velocity
 // using the analogue reading from the encoder

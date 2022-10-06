@@ -3,9 +3,9 @@
 Function implementation for operations related to the C167 timers
 **/
 
-#include <reg167.h>
+/* Include required submodules */
 #include "timer.h"
-
+#include "Source/platform.h"
 
 // global run counter
 
@@ -16,7 +16,7 @@ void T3_interrupt (void) interrupt 0x23
 	T3R = 0;
 	run_counter++;
 }
-/********** Function Declearations **********/
+/********** Function Definitions **********/
 
 void timerT6Config(unsigned int prescaler, unsigned int mode, unsigned int direction)
 {
