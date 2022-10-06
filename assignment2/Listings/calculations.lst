@@ -1,4 +1,4 @@
-C166 COMPILER V7.57.0, CALCULATIONS                                                        10/06/2022 13:26:33 PAGE 1   
+C166 COMPILER V7.57.0, CALCULATIONS                                                        10/06/2022 13:41:48 PAGE 1   
 
 
 C166 COMPILER V7.57.0, COMPILATION OF MODULE CALCULATIONS
@@ -15,108 +15,106 @@ COMPILER INVOKED BY: D:\Keil\C166\BIN\C166.EXE Source\calculations.c BROWSE MOD1
     5         **/
     6         
     7         /* Include required submodules */
-    8         #include <reg167.h>
-    9         #include "platform.h"
-   10         #include "calculations.h"
+    8         #include "calculations.h"
+    9         
+   10         /********** Function Definitions **********/
    11         
-   12         /********** Function Definitions **********/
-   13         
-   14         // v = Rw
-   15         float calculateVehicleLinVel(float wheel_ang_vel)
-   16         {
-   17  1        float result = ROLLING_RADIUS * wheel_ang_vel;
-   18  1        return result;
-   19  1      }
-   20         
-   21         // s = 0.36v + 0.1v^2
-   22         float calculateMinBrkDist(float vehicle_lin_vel)
-   23         {
-   24  1        float result = (0.36 * vehicle_lin_vel) +
-   25  1           (0.1 * (vehicle_lin_vel * vehicle_lin_vel));
-   26  1        return result;
-   27  1      }
-   28         
-   29         float calculateRelativeVel(float* distance_buffer, unsigned int buffer_size)
-   30         {
-   31  1        float result = 0.5 * (distance_buffer[buffer_size - 1] -
-   32  1           distance_buffer[0]);
-   33  1        return result;
-   34  1      }
-   35         
-   36         float calculateBrakingTorque(float vehicle_lin_vel, float dist_to_obst)
-   37         {
-   38  1        float deceleration = 0;
-   39  1        float wheel_ang_acc = 0;
-   40  1        float est_brk_force = 0;
-   41  1        float braking_torque = 0;
-   42  1      
-   43  1        // a = -(v^2)/(2d)
-   44  1        deceleration = -(vehicle_lin_vel * vehicle_lin_vel)/(2 * dist_to_obst);
-   45  1      
-   46  1        // wheel_ang_acc = a/R
-   47  1        wheel_ang_acc = deceleration/ROLLING_RADIUS;
-   48  1      
-   49  1        // ma = -F, F = -ma
-   50  1        est_brk_force = -(deceleration * QTR_CAR_MASS);
-   51  1      
-   52  1        // T = F*R+J(wheel_ang_acc)
-   53  1        braking_torque = (est_brk_force * ROLLING_RADIUS) + 
-   54  1          (MOMENT_OF_INERTIA * wheel_ang_acc);
-C166 COMPILER V7.57.0, CALCULATIONS                                                        10/06/2022 13:26:33 PAGE 2   
+   12         // v = Rw
+   13         float calculateVehicleLinVel(float wheel_ang_vel)
+   14         {
+   15  1        float result = ROLLING_RADIUS * wheel_ang_vel;
+   16  1        return result;
+   17  1      }
+   18         
+   19         // s = 0.36v + 0.1v^2
+   20         float calculateMinBrkDist(float vehicle_lin_vel)
+   21         {
+   22  1        float result = (0.36 * vehicle_lin_vel) +
+   23  1           (0.1 * (vehicle_lin_vel * vehicle_lin_vel));
+   24  1        return result;
+   25  1      }
+   26         
+   27         float calculateRelativeVel(void)
+   28         {
+   29  1        float result = 0.5 * (g_dist_buffer[BUFFER_SIZE - 1] -
+   30  1           g_dist_buffer[0]);
+   31  1        return result;
+   32  1      }
+   33         
+   34         float calculateBrakingTorque(float vehicle_lin_vel, float dist_to_obst)
+   35         {
+   36  1        float deceleration = 0;
+   37  1        float wheel_ang_acc = 0;
+   38  1        float est_brk_force = 0;
+   39  1        float braking_torque = 0;
+   40  1      
+   41  1        // a = -(v^2)/(2d)
+   42  1        deceleration = -(vehicle_lin_vel * vehicle_lin_vel)/(2 * dist_to_obst);
+   43  1      
+   44  1        // wheel_ang_acc = a/R
+   45  1        wheel_ang_acc = deceleration/ROLLING_RADIUS;
+   46  1      
+   47  1        // ma = -F, F = -ma
+   48  1        est_brk_force = -(deceleration * QTR_CAR_MASS);
+   49  1      
+   50  1        // T = F*R+J(wheel_ang_acc)
+   51  1        braking_torque = (est_brk_force * ROLLING_RADIUS) + 
+   52  1          (MOMENT_OF_INERTIA * wheel_ang_acc);
+   53  1      
+   54  1        return braking_torque;
+C166 COMPILER V7.57.0, CALCULATIONS                                                        10/06/2022 13:41:48 PAGE 2   
 
-   55  1      
-   56  1        return braking_torque;
-   57  1      }
-   58         
-   59         void calculationsHandler(float* buffer)
-   60         {
-   61  1        volatile float angular_velocity = 0;
-   62  1        volatile float linear_velocity = 0;
-   63  1        volatile float min_distance = 0;
-   64  1        volatile float relative_velocity = 0;
-   65  1        volatile float braking_torque = 0;
-   66  1      
-   67  1        // First, get vehicle linear velocity
-   68  1        angular_velocity = encoderGetVelocity();
-   69  1        linear_velocity = calculateVehicleLinVel(angular_velocity);
-   70  1      
-   71  1        // Then check minimum braking distance
-   72  1        min_distance = calculateMinBrkDist(linear_velocity);
-   73  1      
-   74  1        // Also check relative velocity
-   75  1        relative_velocity = calculateRelativeVel(buffer, BUFFER_SIZE);
-   76  1      
-   77  1        // Calculate relative braking torque
-   78  1        braking_torque = calculateBrakingTorque(linear_velocity, buffer[1]);
-   79  1      
-   80  1        // Clear output to DAC
-   81  1        dacReset();
-   82  1      
-   83  1        // Send warning? (distance)
-   84  1        if ((min_distance > buffer[1]) && (relative_velocity < 0))
-   85  1        {
-   86  2          // send warning, do not write to DAC
-   87  2          aebWarning();
-   88  2        }
-   89  1        // Send warning? (torque)
-   90  1        else if ((braking_torque > MAX_BRAKE_TORQUE) && (relative_velocity < 0))
-   91  1        {
-   92  2          // send warning,do not write to DAC
-   93  2          aebWarning();
-   94  2        }
-   95  1        else if (braking_torque == 0x00)
-   96  1        {
-   97  2          dacWrite(0x01);
-   98  2        }
-   99  1        else
-  100  1        {
-  101  2          dacWrite(braking_torque * DAC_SCALE_FACTOR);
-  102  2        }
-  103  1      }
+   55  1      }
+   56         
+   57         void calculationsHandler(void)
+   58         {
+   59  1        volatile float angular_velocity = 0;
+   60  1        volatile float linear_velocity = 0;
+   61  1        volatile float min_distance = 0;
+   62  1        volatile float relative_velocity = 0;
+   63  1        volatile float braking_torque = 0;
+   64  1      
+   65  1        // First, get vehicle linear velocity
+   66  1        angular_velocity = encoderGetVelocity();
+   67  1        linear_velocity = calculateVehicleLinVel(angular_velocity);
+   68  1      
+   69  1        // Then check minimum braking distance
+   70  1        min_distance = calculateMinBrkDist(linear_velocity);
+   71  1      
+   72  1        // Also check relative velocity
+   73  1        relative_velocity = calculateRelativeVel();
+   74  1      
+   75  1        // Calculate relative braking torque
+   76  1        braking_torque = calculateBrakingTorque(linear_velocity, g_dist_buffer[1]);
+   77  1      
+   78  1        // Clear output to DAC
+   79  1        dacReset();
+   80  1      
+   81  1        // Send warning? (distance)
+   82  1        if ((min_distance > g_dist_buffer[1]) && (relative_velocity < 0))
+   83  1        {
+   84  2          // send warning, do not write to DAC
+   85  2          aebWarning();
+   86  2        }
+   87  1        // Send warning? (torque)
+   88  1        else if ((braking_torque > MAX_BRAKE_TORQUE) && (relative_velocity < 0))
+   89  1        {
+   90  2          // send warning,do not write to DAC
+   91  2          aebWarning();
+   92  2        }
+   93  1        else if (braking_torque == 0x00)
+   94  1        {
+   95  2          dacWrite(0x01);
+   96  2        }
+   97  1        else
+   98  1        {
+   99  2          dacWrite(braking_torque * DAC_SCALE_FACTOR);
+  100  2        }
+  101  1      }
 
 
 MODULE INFORMATION:   INITIALIZED  UNINITIALIZED
-  CODE SIZE        =         658     --------
+  CODE SIZE        =         644     --------
   NEAR-CONST SIZE  =    --------     --------
   FAR-CONST SIZE   =    --------     --------
   HUGE-CONST SIZE  =    --------     --------
@@ -126,10 +124,10 @@ MODULE INFORMATION:   INITIALIZED  UNINITIALIZED
   XHUGE-DATA SIZE  =    --------     --------
   IDATA-DATA SIZE  =    --------     --------
   SDATA-DATA SIZE  =    --------     --------
-C166 COMPILER V7.57.0, CALCULATIONS                                                        10/06/2022 13:26:33 PAGE 3   
-
   BDATA-DATA SIZE  =    --------     --------
   HUGE-DATA SIZE   =    --------     --------
+C166 COMPILER V7.57.0, CALCULATIONS                                                        10/06/2022 13:41:48 PAGE 3   
+
   BIT SIZE         =    --------     --------
   INIT'L SIZE      =    --------     --------
 END OF MODULE INFORMATION.

@@ -5,8 +5,6 @@ torque & braking distance calculations
 **/
 
 /* Include required submodules */
-#include <reg167.h>
-#include "platform.h"
 #include "calculations.h"
 
 /********** Function Definitions **********/
@@ -26,10 +24,10 @@ float calculateMinBrkDist(float vehicle_lin_vel)
 	return result;
 }
 
-float calculateRelativeVel(float* distance_buffer, unsigned int buffer_size)
+float calculateRelativeVel(void)
 {
-	float result = 0.5 * (distance_buffer[buffer_size - 1] -
-		 distance_buffer[0]);
+	float result = 0.5 * (g_dist_buffer[BUFFER_SIZE - 1] -
+		 g_dist_buffer[0]);
 	return result;
 }
 
@@ -56,7 +54,7 @@ float calculateBrakingTorque(float vehicle_lin_vel, float dist_to_obst)
 	return braking_torque;
 }
 
-void calculationsHandler(float* buffer)
+void calculationsHandler(void)
 {
 	volatile float angular_velocity = 0;
 	volatile float linear_velocity = 0;
@@ -72,16 +70,16 @@ void calculationsHandler(float* buffer)
 	min_distance = calculateMinBrkDist(linear_velocity);
 
 	// Also check relative velocity
-	relative_velocity = calculateRelativeVel(buffer, BUFFER_SIZE);
+	relative_velocity = calculateRelativeVel();
 
 	// Calculate relative braking torque
-	braking_torque = calculateBrakingTorque(linear_velocity, buffer[1]);
+	braking_torque = calculateBrakingTorque(linear_velocity, g_dist_buffer[1]);
 
 	// Clear output to DAC
 	dacReset();
 
 	// Send warning? (distance)
-	if ((min_distance > buffer[1]) && (relative_velocity < 0))
+	if ((min_distance > g_dist_buffer[1]) && (relative_velocity < 0))
 	{
 		// send warning, do not write to DAC
 		aebWarning();
@@ -98,6 +96,6 @@ void calculationsHandler(float* buffer)
 	}
 	else
 	{
-		dacWrite(braking_torque * DAC_SCALE_FACTOR);
+		dacWrite((unsigned int)braking_torque * DAC_SCALE_FACTOR);
 	}
 }

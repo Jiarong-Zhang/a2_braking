@@ -23,8 +23,6 @@ void pop_front(float* buffer, int buffer_size)
 			}
     }
     
-    
-	
 }
 
 void push_back(float* buffer, int buffer_size, float value)

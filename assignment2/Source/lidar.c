@@ -49,16 +49,15 @@ Function implementation for operations related to the LIDAR
 	return &distance_buffer;
 }*/
 
-void lidarTimerInit(void)
-{
-	timerT6Config(GPT_2_PRESC_4, TIMER_MODE, COUNT_DOWN);
-	T6IC = 0x0044; // set up timer 6interrupt config
-}
-
 void lidarT6Interrupt (void) interrupt 0x26
 {
 	T6R = 0;	// stop timer T6
-	wait_flag = 0;
+	g_wait_flag = 0;	// lower flag, indicate "take next measurement!"
+}
+void lidarTimerInit(void)
+{
+	timerT6Config(GPT_2_PRESC_4, TIMER_MODE, COUNT_DOWN);
+	timerT6EnableInterrupt();
 }
 
 float lidarGetResult(void)
@@ -73,9 +72,16 @@ float lidarGetResult(void)
 	return interpolated_result;
 }
 
-void lidarUpdateBuffer(float* buffer)
+void lidarUpdateBuffer(void)
 {
 	float lidar_result = lidarGetResult();
-	pop_front(buffer, BUFFER_SIZE);
-	push_back(buffer, BUFFER_SIZE, lidar_result);
+
+	interruptDisable(); // disable interrupts for now
+	pop_front(g_dist_buffer, BUFFER_SIZE);
+	push_back(g_dist_buffer, BUFFER_SIZE, lidar_result);
+	g_wait_flag = 1;		// raise flag, indicates "measurement taken"
+
+	interruptEnable(); // re-enable interrupts
+	
+	timerT6StartMS(10);		// start 10ms timer
 }

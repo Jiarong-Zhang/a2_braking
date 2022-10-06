@@ -67,6 +67,8 @@ Function declarations for operations related to the C167 timers
 //
 void timerT6Config(unsigned int prescaler, unsigned int mode, unsigned int direction);
 
+void timerT6EnableInterrupt(void);
+
 // Start timer T6 for the given time
 // 		Takes time to count in milliseconds
 //		Returns nothing

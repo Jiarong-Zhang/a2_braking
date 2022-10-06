@@ -10,6 +10,7 @@ Function declarations for operations related to the LIDAR
 #include "buffer.h"
 #include "Drivers/adc.h"
 #include "Drivers/timer.h"
+#include "Drivers/interrupt.h"
 #include "platform.h"
 
 /********** Macros **********/
@@ -23,7 +24,7 @@ Function declarations for operations related to the LIDAR
 
 void lidarTimerInit(void);
 
-void lidarUpdateBuffer(float* buffer);
+void lidarUpdateBuffer(void);
 
 float lidarGetResult(void);
 

@@ -31,6 +31,12 @@ void timerT6Config(unsigned int prescaler, unsigned int mode, unsigned int direc
 	
 }
 
+void timerT6EnableInterrupt(void)
+{
+	T6IC = 0x0044; // set up timer 6 interrupt config
+}
+
+
 void timerT6StartMS(unsigned int ms)
 {
 	unsigned int T6I = 0;
@@ -146,7 +152,6 @@ void timerT3StartS(unsigned int sec)
 			}
 			
 		}
-//		T3IC = 0x00;
 	time_left = sec - period * run_counter;
 	}
 
@@ -160,5 +165,6 @@ void timerT3StartS(unsigned int sec)
 		T3 = value;
 
 		T3CON |= (TIMER_ON << TIMER_START_BIT);
+		run_counter = 0;
 
 }

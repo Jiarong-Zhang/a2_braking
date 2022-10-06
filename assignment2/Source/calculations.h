@@ -46,7 +46,7 @@ float calculateMinBrkDist(float vehicle_lin_vel);
 // 		Takes an array of distances between vehicle and 
 //			obstruction as argument
 //		Returns relative velocity
-float calculateRelativeVel(float* buffer, unsigned int buffer_size);
+float calculateRelativeVel(void);
 
 // Calculat required braking torque
 // T = F*R+J(alpha)
@@ -58,6 +58,6 @@ float calculateBrakingTorque(float vehicle_lin_vel, float dist_to_obst);
 // The main driver for our calculation functions
 // 		Take no arguments
 //		Returns nothing
-void calculationsHandler(float* buffer);
+void calculationsHandler(void);
 
 #endif

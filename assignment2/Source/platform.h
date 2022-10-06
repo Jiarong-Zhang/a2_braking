@@ -9,8 +9,9 @@ Function declarations for operations related to the xxx
 
 #define BUFFER_SIZE 3
 
-/* Extern Definitions */
-extern volatile unsigned int wait_flag;
+/********** Extern Declaration **********/
+extern volatile unsigned int g_wait_flag;
+extern volatile float g_dist_buffer[BUFFER_SIZE];
 
 /********** Function Definitions **********/
 

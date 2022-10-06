@@ -16,18 +16,17 @@ subsystem
 #include "calculations.h"
 #include <reg167.h>
 
-volatile unsigned int wait_flag = 0;
+/********** Extern Definitions **********/
+volatile unsigned int g_wait_flag = 0;
+volatile float g_dist_buffer[BUFFER_SIZE] = {0};
 
 void main(void)
 {
-	volatile float distance_buffer[BUFFER_SIZE] = {0xFFFF};
 	volatile float result = 0;
 	volatile unsigned int ready_flag = 0;
-	volatile float buffer[BUFFER_SIZE] = {0};
 	
-
 	interruptEnable();
-	wait_flag = 0;
+	g_wait_flag = 0;
 	aebInit(); 
 	adcGpioInit();
 	dacInit();
@@ -38,15 +37,11 @@ void main(void)
 		ready_flag = aebRead();
 		if (ready_flag == 1)
 		{
-			if (wait_flag == 0)
+			if (g_wait_flag == 0)		// only update if flag is lowered
 			{
-				interruptDisable(); // disable interrupts for now
-				lidarUpdateBuffer(buffer);
-				calculationsHandler(buffer);
-				interruptEnable(); // re-enable interrupts
-				wait_flag = 1;
-				timerT6StartMS(10);
+				lidarUpdateBuffer();	// update buffer
 			}
+			calculationsHandler();
 		}
  	}
 }
