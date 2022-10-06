@@ -7,9 +7,11 @@ torque & braking distance calculations
 #define CALCULATIONS_H
 
 #include <reg167.h>
+#include "Drivers/aeb.h"
+#include "Drivers/dac.h"
 #include "encoder.h"
 #include "lidar.h"
-#include "Drivers/aeb.h"
+
 
 /********** Macros **********/
 
@@ -18,6 +20,9 @@ torque & braking distance calculations
 #define QTR_CAR_MASS 		450			// m
 #define MAX_BRAKE_TORQUE 	1000		// Tm
 #define MOMENT_OF_INERTIA	0.685		// J
+
+// Scale output to DAC
+#define DAC_SCALE_FACTOR 	0.255f 		// 255/1000
 
 /********** Function Declearations **********/
 

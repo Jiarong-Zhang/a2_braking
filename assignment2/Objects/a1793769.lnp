@@ -6,7 +6,8 @@
 ".\Objects\adc.obj",
 ".\Objects\gpio.obj",
 ".\Objects\aeb.obj",
-".\Objects\timer.obj" 
+".\Objects\timer.obj",
+".\Objects\dac.obj" 
 TO ".\Objects\a1793769" 
 PRINT(".\Listings\a1793769.m66") CLASSES (ICODE (0x4000-0xDFFF), NCODE (0x10000-0x1FFFF), 
 FCONST (0x4000-0xDFFF, 0x10000-0x43FFF), HCONST (0x4000-0xDFFF, 0x10000-0x43FFF), 

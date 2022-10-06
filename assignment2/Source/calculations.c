@@ -56,11 +56,11 @@ float calculateBrakingTorque(float vehicle_lin_vel, float dist_to_obst)
 
 void calculationsHandler(float* buffer)
 {
-	float angular_velocity = 0;
-	float linear_velocity = 0;
-	float min_distance = 0;
-	float relative_velocity = 0;
-	float braking_torque = 0;
+	volatile float angular_velocity = 0;
+	volatile float linear_velocity = 0;
+	volatile float min_distance = 0;
+	volatile float relative_velocity = 0;
+	volatile float braking_torque = 0;
 
 	// First, get vehicle linear velocity
 	angular_velocity = encoderGetVelocity();
@@ -88,5 +88,12 @@ void calculationsHandler(float* buffer)
 		// send warning
 		aebWarning();
 	}
-
+	else if (braking_torque == 0x00)
+	{
+		dacWrite(0x01);
+	}
+	else
+	{
+		dacWrite(braking_torque * DAC_SCALE_FACTOR);
+	}
 }

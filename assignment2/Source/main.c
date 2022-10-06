@@ -7,6 +7,7 @@ subsystem
 /* Include required submodules */
 #include "Drivers/aeb.h"
 #include "Drivers/adc.h"
+#include "Drivers/dac.h"
 #include "Drivers/timer.h"
 #include "Drivers/platform.h"
 #include "encoder.h"
@@ -36,7 +37,10 @@ void main(void)
 	
 	aebInit(); 
 	adcGpioInit();
+	dacInit();
 	timerT6Config(GPT_2_PRESC_4, TIMER_MODE, COUNT_DOWN);
+
+	dacWrite((unsigned int)(1000 * DAC_SCALE_FACTOR));
 	
 	while(1)
 	{

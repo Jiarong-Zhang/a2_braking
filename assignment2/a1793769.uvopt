@@ -214,7 +214,7 @@
         <SetRegEntry>
           <Number>0</Number>
           <Key>DLGD167</Key>
-          <Name>(103=120,121,393,539,0)(3005=-1,-1,-1,-1,0)(108=-1,-1,-1,-1,0)(3004=-1,-1,-1,-1,0)(100=-1,-1,-1,-1,0)(102=1384,436,1718,777,1)(106=-1,-1,-1,-1,0)(82=-1,-1,-1,-1,0)(83=225,186,633,327,0)(84=1239,494,1587,661,1)(85=-1,-1,-1,-1,0)(86=-1,-1,-1,-1,0)(3009=1163,685,1520,826,1)(88=-1,-1,-1,-1,0)(89=-1,-1,-1,-1,0)(90=-1,-1,-1,-1,0)(93=-1,-1,-1,-1,0)(94=-1,-1,-1,-1,0)(95=-1,-1,-1,-1,0)(96=-1,-1,-1,-1,0)(97=956,468,1188,826,1)(91=-1,-1,-1,-1,0)(92=-1,-1,-1,-1,0)(101=-1,-1,-1,-1,0)(98=-1,-1,-1,-1,0)(105=-1,-1,-1,-1,0)(104=-1,-1,-1,-1,0)(80=-1,-1,-1,-1,0)(3007=-1,-1,-1,-1,0)(3000=-1,-1,-1,-1,0)(3012=165,121,483,297,0)</Name>
+          <Name>(103=120,121,393,539,0)(3005=-1,-1,-1,-1,0)(108=-1,-1,-1,-1,0)(3004=-1,-1,-1,-1,0)(100=-1,-1,-1,-1,0)(102=1384,436,1718,777,1)(106=-1,-1,-1,-1,0)(82=-1,-1,-1,-1,0)(83=225,186,633,327,0)(84=1126,291,1474,458,1)(85=-1,-1,-1,-1,0)(86=-1,-1,-1,-1,0)(3009=1163,685,1520,826,1)(88=-1,-1,-1,-1,0)(89=-1,-1,-1,-1,0)(90=-1,-1,-1,-1,0)(93=-1,-1,-1,-1,0)(94=-1,-1,-1,-1,0)(95=-1,-1,-1,-1,0)(96=-1,-1,-1,-1,0)(97=956,468,1188,826,1)(91=-1,-1,-1,-1,0)(92=-1,-1,-1,-1,0)(101=-1,-1,-1,-1,0)(98=-1,-1,-1,-1,0)(105=-1,-1,-1,-1,0)(104=-1,-1,-1,-1,0)(80=-1,-1,-1,-1,0)(3007=-1,-1,-1,-1,0)(3000=-1,-1,-1,-1,0)(3012=165,121,483,297,0)</Name>
         </SetRegEntry>
         <SetRegEntry>
           <Number>0</Number>
@@ -226,9 +226,25 @@
         <Bp>
           <Number>0</Number>
           <Type>0</Type>
-          <LineNumber>20</LineNumber>
+          <LineNumber>83</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>67224</Address>
+          <Address>67048</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>1</BreakIfRCount>
+          <Filename>Source\calculations.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression>\CALCULATIONS\83</Expression>
+        </Bp>
+        <Bp>
+          <Number>1</Number>
+          <Type>0</Type>
+          <LineNumber>42</LineNumber>
+          <EnabledFlag>1</EnabledFlag>
+          <Address>67402</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -237,7 +253,7 @@
           <BreakIfRCount>1</BreakIfRCount>
           <Filename>Source\main.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\MAIN\20</Expression>
+          <Expression>\MAIN\42</Expression>
         </Bp>
       </Breakpoint>
       <WatchWindow1>
@@ -265,6 +281,11 @@
           <count>4</count>
           <WinNumber>1</WinNumber>
           <ItemText>wait_flag</ItemText>
+        </Ww>
+        <Ww>
+          <count>5</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>braking_torque</ItemText>
         </Ww>
       </WatchWindow1>
       <ToolboxButtons>
@@ -602,6 +623,18 @@
       <bDave2>0</bDave2>
       <PathWithFileName>.\Drivers\platform.h</PathWithFileName>
       <FilenameWithoutPath>platform.h</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>2</GroupNumber>
+      <FileNumber>21</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>.\Drivers\dac.c</PathWithFileName>
+      <FilenameWithoutPath>dac.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>

@@ -1,0 +1,56 @@
+C166 COMPILER V7.57.0, DAC                                                                 10/06/2022 10:54:33 PAGE 1   
+
+
+C166 COMPILER V7.57.0, COMPILATION OF MODULE DAC
+OBJECT MODULE PLACED IN .\Objects\dac.obj
+COMPILER INVOKED BY: D:\Keil\C166\BIN\C166.EXE Drivers\dac.c BROWSE MOD167 DEBUG PRINT(.\Listings\dac.lst) TABS(2) OBJEC
+                    -T(.\Objects\dac.obj) 
+
+ stmt lvl     source
+
+    1         // a1793769 - Emily Zhang
+    2         /**
+    3         Function implementations for operations related to the DAC 
+    4         **/
+    5         
+    6         #include <reg167.h>
+    7         #include "dac.h"
+    8         
+    9         /********** Macros **********/
+   10         
+   11         /********** Function Declearations **********/
+   12         
+   13         void dacInit(void)
+   14         {
+   15  1        int i;
+   16  1        for (i = 0; i < DAC_NUM_BITS; ++i)
+   17  1        {
+   18  2          setPinDirectionP2(i, OUTPUT);
+   19  2        }
+   20  1      }
+   21         
+   22         void dacWrite(unsigned int input)
+   23         {
+   24  1        P2 |= ((input & 0xFF) << DAC_LSB_PIN);
+   25  1      }
+
+
+MODULE INFORMATION:   INITIALIZED  UNINITIALIZED
+  CODE SIZE        =          32     --------
+  NEAR-CONST SIZE  =    --------     --------
+  FAR-CONST SIZE   =    --------     --------
+  HUGE-CONST SIZE  =    --------     --------
+  XHUGE-CONST SIZE =    --------     --------
+  NEAR-DATA SIZE   =    --------     --------
+  FAR-DATA SIZE    =    --------     --------
+  XHUGE-DATA SIZE  =    --------     --------
+  IDATA-DATA SIZE  =    --------     --------
+  SDATA-DATA SIZE  =    --------     --------
+  BDATA-DATA SIZE  =    --------     --------
+  HUGE-DATA SIZE   =    --------     --------
+  BIT SIZE         =    --------     --------
+  INIT'L SIZE      =    --------     --------
+END OF MODULE INFORMATION.
+
+
+C166 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
