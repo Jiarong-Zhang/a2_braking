@@ -2,7 +2,7 @@
 /**
  * File name main.c
  * Description: Global, constant, and extern definition declearations
-**/
+ **/
 
 #ifndef PLATFORM_H
 #define PLATFORM_H

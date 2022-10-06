@@ -2,7 +2,7 @@
 /**
  * File name calculations.h
  * Description: Function declarations for operations that perfrom the main
-torque & braking distance calculations 
+torque & braking distance calculations
 **/
 
 #ifndef CALCULATIONS_H
@@ -10,23 +10,23 @@ torque & braking distance calculations
 
 /********** Include required submodules**********/
 
-#include <reg167.h>
 #include "Drivers/aeb.h"
 #include "Drivers/dac.h"
 #include "encoder.h"
 #include "lidar.h"
 #include "platform.h"
+#include <reg167.h>
 
 /********** Macros **********/
 
 // Constant values used in our calculations
-#define ROLLING_RADIUS 		0.484f		// R
-#define QTR_CAR_MASS 		450			// m
-#define MAX_BRAKE_TORQUE 	1000		// Tm
-#define MOMENT_OF_INERTIA	0.685		// J
+#define ROLLING_RADIUS 0.484f   // R
+#define QTR_CAR_MASS 450        // m
+#define MAX_BRAKE_TORQUE 1000   // Tm
+#define MOMENT_OF_INERTIA 0.685 // J
 
 // Scale output to DAC
-#define DAC_SCALE_FACTOR 	0.255f 		// 255/1000
+#define DAC_SCALE_FACTOR 0.255f // 255/1000
 
 /********** Function Declearations **********/
 
@@ -46,7 +46,7 @@ float calculateMinBrkDist(float vehicle_lin_vel);
 
 // Calculat relative braking distance
 // vr(tn) = 1/2f[d(tn+1) - d(tn-1)]
-// 		Takes an array of distances between vehicle and 
+// 		Takes an array of distances between vehicle and
 //			obstruction as argument
 //		Returns relative velocity
 //

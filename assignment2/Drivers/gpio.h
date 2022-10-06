@@ -2,7 +2,7 @@
 /**
  * File name: gpio.h
  * Description:Declarations for GPIO functions, for both P2 and P5
-**/
+ **/
 #ifndef GPIO_H
 #define GPIO_H
 
@@ -13,11 +13,11 @@
 /********** Macros **********/
 
 // Setup macros for declaring pin direction
-#define INPUT  0U
+#define INPUT 0U
 #define OUTPUT 1U
 
 // Setup macros for declaring pin value
-#define LOW  0U
+#define LOW 0U
 #define HIGH 1U
 
 /********** Function Declearations **********/

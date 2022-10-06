@@ -19,12 +19,12 @@ pop_front and push_back and meant to be used in conjunction!!
 // 		Takes pointer to buffer, and size of buffer
 //		Returns nothing
 //
-void pop_front(float* buffer, int buffer_size);
+void pop_front(float *buffer, int buffer_size);
 
 // Sets the last value of the buffer
 // 		Takes pointer to buffer, size of buffer, value to be inserted
 //		Returns nothing
 //
-void push_back(float* buffer, int buffer_size, float value);
+void push_back(float *buffer, int buffer_size, float value);
 
 #endif

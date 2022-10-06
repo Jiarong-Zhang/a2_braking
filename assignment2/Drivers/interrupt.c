@@ -1,8 +1,8 @@
 // a1793769 - Emily Zhang
 /**
  * File name interrupt.c
- * Description: Function declarations for operations related C167 interrupts 
-**/
+ * Description: Function declarations for operations related C167 interrupts
+ **/
 
 /********** Include required submodules**********/
 
@@ -10,12 +10,6 @@
 
 /********** Function Definitions **********/
 
-void interruptEnable(void)
-{
-	IEN = 1;
-}
+void interruptEnable(void) { IEN = 1; }
 
-void interruptDisable(void)
-{
-	IEN = 0;
-}
+void interruptDisable(void) { IEN = 0; }

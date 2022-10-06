@@ -1,22 +1,22 @@
 // a1793769 - Emily Zhang
 /**
  * File name: aeb.h
- * Description: Function declarations for operations related to the AEB 
-**/
+ * Description: Function declarations for operations related to the AEB
+ **/
 
 #ifndef AEB_H
 #define AEB_H
 
 /********** Include required submodules**********/
 
-#include <reg167.h>
 #include "gpio.h"
+#include <reg167.h>
 
 /********** Macros **********/
 
-#define AEB_WARNING_PIN 	11U
-#define AEB_INPUT_PIN		15U
-#define AEB_WARNING_TIME	4U	// in seconds
+#define AEB_WARNING_PIN 11U
+#define AEB_INPUT_PIN 15U
+#define AEB_WARNING_TIME 4U // in seconds
 
 /********** Function Declearations **********/
 
@@ -27,7 +27,7 @@
 //
 void aebInit(void);
 
-// Read the signal at P2.15, which is connected to the 
+// Read the signal at P2.15, which is connected to the
 // the AEB
 // 		Takes no arguments
 //		Returns value read
@@ -39,6 +39,5 @@ unsigned int aebRead(void);
 //		Returns nothing
 //
 void aebWarning(void);
-
 
 #endif

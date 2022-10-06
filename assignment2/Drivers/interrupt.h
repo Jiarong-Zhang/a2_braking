@@ -1,8 +1,8 @@
 // a1793769 - Emily Zhang
 /**
  * File name interrupt.h
- * Description: Function declarations for operations related C167 interrupts 
-**/
+ * Description: Function declarations for operations related C167 interrupts
+ **/
 
 #ifndef INTERRUPT_H
 #define INTERRUPT_H
