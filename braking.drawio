@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2022-10-06T04:00:37.845Z" agent="5.0 (Windows)" etag="qFMoyqWxgdAz02i1KSOF" version="20.2.7" type="github" pages="2">
+<mxfile host="app.diagrams.net" modified="2022-10-06T04:02:52.078Z" agent="5.0 (Windows)" etag="xXh9ul4Dvft_Ys-IruXi" version="20.2.7" type="github" pages="2">
   <diagram id="C5RBs43oDa-KdzZeNtuy" name="high_level">
     <mxGraphModel dx="1185" dy="660" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -131,7 +131,7 @@
     </mxGraphModel>
   </diagram>
   <diagram name="low_level" id="D6Tcyl-72ndJnhvJp-jU">
-    <mxGraphModel dx="1422" dy="792" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="2031" dy="1131" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="BE4b9odS7JJcmuCLsfvv-0" />
         <mxCell id="BE4b9odS7JJcmuCLsfvv-1" parent="BE4b9odS7JJcmuCLsfvv-0" />
@@ -265,6 +265,9 @@
             <mxPoint x="430" y="800" as="targetPoint" />
           </mxGeometry>
         </mxCell>
+        <mxCell id="Fx_FsqtWgzgns6y88H-w-0" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#d6b656;opacity=40;fillColor=#fff2cc;strokeWidth=3;" vertex="1" parent="BE4b9odS7JJcmuCLsfvv-1">
+          <mxGeometry x="847" y="20" width="393" height="860" as="geometry" />
+        </mxCell>
         <mxCell id="ljqrpDVs2nWzhOfp307L-22" value="" style="group" vertex="1" connectable="0" parent="BE4b9odS7JJcmuCLsfvv-1">
           <mxGeometry x="260" y="370" width="130" height="70" as="geometry" />
         </mxCell>
@@ -306,6 +309,15 @@
               <mxPoint x="430" y="190" />
             </Array>
           </mxGeometry>
+        </mxCell>
+        <mxCell id="hSBOZVNV73_6fab6uhYW-0" value="" style="group" vertex="1" connectable="0" parent="BE4b9odS7JJcmuCLsfvv-1">
+          <mxGeometry x="980" y="30" width="130" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="hSBOZVNV73_6fab6uhYW-1" value="" style="verticalLabelPosition=bottom;verticalAlign=top;html=1;shape=process;whiteSpace=wrap;rounded=1;size=0.14;arcSize=6;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="hSBOZVNV73_6fab6uhYW-0">
+          <mxGeometry width="130" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="hSBOZVNV73_6fab6uhYW-2" value="Take LIDAR Input" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="hSBOZVNV73_6fab6uhYW-0">
+          <mxGeometry x="35" y="20" width="60" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
