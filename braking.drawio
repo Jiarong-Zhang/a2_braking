@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2022-10-06T04:00:16.555Z" agent="5.0 (Windows)" etag="6B7qPcEcUaBEL2mVQM3Z" version="20.2.7" type="github" pages="2">
+<mxfile host="app.diagrams.net" modified="2022-10-06T04:00:37.845Z" agent="5.0 (Windows)" etag="qFMoyqWxgdAz02i1KSOF" version="20.2.7" type="github" pages="2">
   <diagram id="C5RBs43oDa-KdzZeNtuy" name="high_level">
     <mxGraphModel dx="1185" dy="660" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -206,9 +206,10 @@
         <mxCell id="iDULUNQiDRfPk5zGLDx2-2" value="10ms elapsed since last LIDAR measurement?" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.decision;whiteSpace=wrap;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="BE4b9odS7JJcmuCLsfvv-1">
           <mxGeometry x="120" y="350" width="100" height="100" as="geometry" />
         </mxCell>
-        <mxCell id="iDULUNQiDRfPk5zGLDx2-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="BE4b9odS7JJcmuCLsfvv-1" source="iDULUNQiDRfPk5zGLDx2-6" target="iDULUNQiDRfPk5zGLDx2-12">
-          <mxGeometry relative="1" as="geometry">
+        <mxCell id="iDULUNQiDRfPk5zGLDx2-9" value="T" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="BE4b9odS7JJcmuCLsfvv-1" source="iDULUNQiDRfPk5zGLDx2-6" target="iDULUNQiDRfPk5zGLDx2-12">
+          <mxGeometry x="0.1111" y="10" relative="1" as="geometry">
             <mxPoint x="320" y="815" as="targetPoint" />
+            <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
         <mxCell id="iDULUNQiDRfPk5zGLDx2-17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="BE4b9odS7JJcmuCLsfvv-1" source="iDULUNQiDRfPk5zGLDx2-6" target="iDULUNQiDRfPk5zGLDx2-15">
@@ -219,6 +220,11 @@
               <mxPoint x="60" y="870" />
               <mxPoint x="170" y="870" />
             </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ljqrpDVs2nWzhOfp307L-37" value="F" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="iDULUNQiDRfPk5zGLDx2-17">
+          <mxGeometry x="-0.8596" y="-1" relative="1" as="geometry">
+            <mxPoint y="-14" as="offset" />
           </mxGeometry>
         </mxCell>
         <mxCell id="iDULUNQiDRfPk5zGLDx2-6" value="Satisfied warning condition?" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.decision;whiteSpace=wrap;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="BE4b9odS7JJcmuCLsfvv-1">
