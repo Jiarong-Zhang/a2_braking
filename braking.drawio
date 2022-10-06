@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2022-10-06T03:26:50.949Z" agent="5.0 (Windows)" etag="9yPnr1QFZEj86-PPH-JR" version="20.2.7" type="github">
+<mxfile host="app.diagrams.net" modified="2022-10-06T03:28:41.986Z" agent="5.0 (Windows)" etag="6XFxWN2y9hFj9f8uGrPo" version="20.2.7" type="github">
   <diagram id="C5RBs43oDa-KdzZeNtuy" name="high_level">
-    <mxGraphModel dx="1673" dy="932" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1185" dy="660" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-0" />
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-1" parent="WIyWlLk6GJQsqaUBKTNV-0" />
@@ -97,7 +97,7 @@
         <mxCell id="5GUL64Nvob-jwBLmsiKS-26" value="" style="verticalLabelPosition=bottom;verticalAlign=top;html=1;shape=process;whiteSpace=wrap;rounded=1;size=0.14;arcSize=6;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="5GUL64Nvob-jwBLmsiKS-25">
           <mxGeometry width="130" height="70" as="geometry" />
         </mxCell>
-        <mxCell id="5GUL64Nvob-jwBLmsiKS-27" value="Send warning" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="5GUL64Nvob-jwBLmsiKS-25">
+        <mxCell id="5GUL64Nvob-jwBLmsiKS-27" value="&lt;div&gt;Send warning&lt;/div&gt;&lt;div&gt;via digital output&lt;br&gt;&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="5GUL64Nvob-jwBLmsiKS-25">
           <mxGeometry x="35" y="20" width="60" height="30" as="geometry" />
         </mxCell>
         <mxCell id="5GUL64Nvob-jwBLmsiKS-29" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="5GUL64Nvob-jwBLmsiKS-26">
@@ -115,7 +115,7 @@
         <mxCell id="5GUL64Nvob-jwBLmsiKS-37" value="" style="verticalLabelPosition=bottom;verticalAlign=top;html=1;shape=process;whiteSpace=wrap;rounded=1;size=0.14;arcSize=6;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="5GUL64Nvob-jwBLmsiKS-36">
           <mxGeometry width="130" height="70" as="geometry" />
         </mxCell>
-        <mxCell id="5GUL64Nvob-jwBLmsiKS-38" value="Output to DAC" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="5GUL64Nvob-jwBLmsiKS-36">
+        <mxCell id="5GUL64Nvob-jwBLmsiKS-38" value="Output to 8-bit DAC" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="5GUL64Nvob-jwBLmsiKS-36">
           <mxGeometry x="35" y="20" width="60" height="30" as="geometry" />
         </mxCell>
         <mxCell id="5GUL64Nvob-jwBLmsiKS-45" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="5GUL64Nvob-jwBLmsiKS-37">
