@@ -1,4 +1,4 @@
-C166 COMPILER V7.57.0, INTERRUPT                                                           10/07/2022 00:54:52 PAGE 1   
+C166 COMPILER V7.57.0, INTERRUPT                                                           10/07/2022 01:01:48 PAGE 1   
 
 
 C166 COMPILER V7.57.0, COMPILATION OF MODULE INTERRUPT
@@ -11,8 +11,8 @@ COMPILER INVOKED BY: D:\Keil\C166\BIN\C166.EXE Drivers\interrupt.c BROWSE MOD167
     1         // a1793769 - Emily Zhang
     2         /**
     3          * File name interrupt.c
-    4          * Description: Function declarations for operations related C167 interrupts 
-    5         **/
+    4          * Description: Function declarations for operations related C167 interrupts
+    5          **/
     6         
     7         /********** Include required submodules**********/
     8         
@@ -20,15 +20,9 @@ COMPILER INVOKED BY: D:\Keil\C166\BIN\C166.EXE Drivers\interrupt.c BROWSE MOD167
    10         
    11         /********** Function Definitions **********/
    12         
-   13         void interruptEnable(void)
-   14         {
-   15  1        IEN = 1;
-   16  1      }
-   17         
-   18         void interruptDisable(void)
-   19         {
-   20  1        IEN = 0;
-   21  1      }
+   13         void interruptEnable(void) { IEN = 1; }
+   14         
+   15         void interruptDisable(void) { IEN = 0; }
 
 
 MODULE INFORMATION:   INITIALIZED  UNINITIALIZED

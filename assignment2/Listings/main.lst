@@ -1,4 +1,4 @@
-C166 COMPILER V7.57.0, MAIN                                                                10/07/2022 00:54:52 PAGE 1   
+C166 COMPILER V7.57.0, MAIN                                                                10/07/2022 01:01:47 PAGE 1   
 
 
 C166 COMPILER V7.57.0, COMPILATION OF MODULE MAIN
@@ -12,20 +12,20 @@ COMPILER INVOKED BY: D:\Keil\C166\BIN\C166.EXE Source\main.c BROWSE MOD167 DEBUG
     2         /**
     3          * File name main.c
     4          * Description: Main function that controls the flow of the entire
-    5           subsystem
+    5                 subsystem
     6         **/
     7         
     8         /********** Include required submodules**********/
     9         
-   10         #include "Drivers/aeb.h"
-   11         #include "Drivers/adc.h"
+   10         #include "Drivers/adc.h"
+   11         #include "Drivers/aeb.h"
    12         #include "Drivers/dac.h"
-   13         #include "Drivers/timer.h"
-   14         #include "platform.h"
-   15         #include "Drivers/interrupt.h"
+   13         #include "Drivers/interrupt.h"
+   14         #include "Drivers/timer.h"
+   15         #include "calculations.h"
    16         #include "encoder.h"
    17         #include "lidar.h"
-   18         #include "calculations.h"
+   18         #include "platform.h"
    19         #include <reg167.h>
    20         
    21         /********** Extern Definitions **********/
@@ -35,38 +35,35 @@ COMPILER INVOKED BY: D:\Keil\C166\BIN\C166.EXE Source\main.c BROWSE MOD167 DEBUG
    25         
    26         /********** Main **********/
    27         
-   28         void main(void)
-   29         {
-   30  1        volatile unsigned int result = 0;
-   31  1        volatile unsigned int ready_flag = 0;
-   32  1        
-   33  1        interruptEnable();
-   34  1        g_wait_flag = 0;
-   35  1        aebInit(); 
-   36  1        dacInit();
-   37  1        adcGpioInit();
-   38  1        lidarTimerInit();
-   39  1      
-   40  1        while(1)
-   41  1        {
-   42  2          ready_flag = aebRead();
-   43  2          if (ready_flag == 1)
-   44  2          {
-   45  3            if (g_wait_flag == 0)   // only update if flag is lowered
-   46  3            {
-   47  4              lidarUpdateBuffer();  // update buffer
-   48  4            }
-   49  3            calculationsHandler();
-   50  3            result = (P2 & 0xFF);
-   51  3          }
-   52  2        }
-   53  1      }
-
-C166 COMPILER V7.57.0, MAIN                                                                10/07/2022 00:54:52 PAGE 2   
+   28         void main(void) {
+   29  1        volatile unsigned int result = 0;
+   30  1        volatile unsigned int ready_flag = 0;
+   31  1      
+   32  1        interruptEnable();
+   33  1        g_wait_flag = 0;
+   34  1        aebInit();
+   35  1        dacInit();
+   36  1        adcGpioInit();
+   37  1        lidarTimerInit();
+   38  1      
+   39  1        while (1) {
+   40  2          ready_flag = aebRead();
+   41  2          if (ready_flag == 1) {
+   42  3            if (g_wait_flag == 0) // only update if flag is lowered
+   43  3            {
+   44  4              lidarUpdateBuffer(); // update buffer
+   45  4            }
+   46  3            calculationsHandler();
+   47  3            result = (P2 & 0xFF);
+   48  3          }
+   49  2        }
+   50  1      }
 
 
 MODULE INFORMATION:   INITIALIZED  UNINITIALIZED
   CODE SIZE        =          76     --------
+C166 COMPILER V7.57.0, MAIN                                                                10/07/2022 01:01:47 PAGE 2   
+
   NEAR-CONST SIZE  =    --------     --------
   FAR-CONST SIZE   =    --------     --------
   HUGE-CONST SIZE  =    --------     --------

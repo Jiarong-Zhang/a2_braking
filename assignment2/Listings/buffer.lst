@@ -1,4 +1,4 @@
-C166 COMPILER V7.57.0, BUFFER                                                              10/07/2022 00:54:52 PAGE 1   
+C166 COMPILER V7.57.0, BUFFER                                                              10/07/2022 01:01:47 PAGE 1   
 
 
 C166 COMPILER V7.57.0, COMPILATION OF MODULE BUFFER
@@ -11,36 +11,29 @@ COMPILER INVOKED BY: D:\Keil\C166\BIN\C166.EXE Source\buffer.c BROWSE MOD167 DEB
     1         // a1793769 - Emily Zhang
     2         /**
     3          * File name buffer.c
-    4          * Description: Implementation for operations related to the buffer 
-    5         **/
+    4          * Description: Implementation for operations related to the buffer
+    5          **/
     6         
     7         /********** Include required submodules**********/
     8         #include "buffer.h"
     9         
    10         /********** Function Definitions **********/
    11         
-   12         void pop_front(float* buffer, int buffer_size)
-   13         {
-   14  1        int i = 0;
-   15  1        for(i; i < buffer_size; i++)
-   16  1          {
-   17  2            if (i == buffer_size - 1)
-   18  2            {
-   19  3              buffer[buffer_size-1] = 0xFF;
-   20  3              break;
-   21  3            }
-   22  2            else
-   23  2            {
-   24  3              buffer[i] = buffer[i+1];
-   25  3            }
-   26  2          }
-   27  1          
-   28  1      }
-   29         
-   30         void push_back(float* buffer, int buffer_size, float value)
-   31         {
-   32  1        buffer[buffer_size-1] = value;
-   33  1      }
+   12         void pop_front(float *buffer, int buffer_size) {
+   13  1        int i = 0;
+   14  1        for (i; i < buffer_size; i++) {
+   15  2          if (i == buffer_size - 1) {
+   16  3            buffer[buffer_size - 1] = 0xFF;
+   17  3            break;
+   18  3          } else {
+   19  3            buffer[i] = buffer[i + 1];
+   20  3          }
+   21  2        }
+   22  1      }
+   23         
+   24         void push_back(float *buffer, int buffer_size, float value) {
+   25  1        buffer[buffer_size - 1] = value;
+   26  1      }
 
 
 MODULE INFORMATION:   INITIALIZED  UNINITIALIZED

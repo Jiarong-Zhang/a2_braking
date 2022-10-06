@@ -1,4 +1,4 @@
-C166 COMPILER V7.57.0, DAC                                                                 10/07/2022 00:54:52 PAGE 1   
+C166 COMPILER V7.57.0, DAC                                                                 10/07/2022 01:01:48 PAGE 1   
 
 
 C166 COMPILER V7.57.0, COMPILATION OF MODULE DAC
@@ -11,37 +11,28 @@ COMPILER INVOKED BY: D:\Keil\C166\BIN\C166.EXE Drivers\dac.c BROWSE MOD167 DEBUG
     1         // a1793769 - Emily Zhang
     2         /**
     3          * File name: dac.c
-    4          * Description: Function implementations for operations related to the DAC 
-    5         **/
+    4          * Description: Function implementations for operations related to the DAC
+    5          **/
     6         
     7         /********** Include required submodules**********/
     8         
-    9         #include <reg167.h>
-   10         #include "dac.h"
+    9         #include "dac.h"
+   10         #include <reg167.h>
    11         
    12         /********** Macros **********/
    13         
-   14         
-   15         /********** Function Definitions **********/
-   16         
-   17         void dacInit(void)
-   18         {
-   19  1        int i;
-   20  1        for (i = 0; i < DAC_NUM_BITS; ++i)
-   21  1        {
-   22  2          setPinDirectionP2(i, OUTPUT);
-   23  2        }
-   24  1      }
-   25         
-   26         void dacWrite(unsigned int input)
-   27         {
-   28  1        P2 |= ((input & 0xFF) << DAC_LSB_PIN);
-   29  1      }
-   30         
-   31         void dacReset(void)
-   32         {
-   33  1        P2 &= ~(0xFF << DAC_LSB_PIN);
-   34  1      }
+   14         /********** Function Definitions **********/
+   15         
+   16         void dacInit(void) {
+   17  1        int i;
+   18  1        for (i = 0; i < DAC_NUM_BITS; ++i) {
+   19  2          setPinDirectionP2(i, OUTPUT);
+   20  2        }
+   21  1      }
+   22         
+   23         void dacWrite(unsigned int input) { P2 |= ((input & 0xFF) << DAC_LSB_PIN); }
+   24         
+   25         void dacReset(void) { P2 &= ~(0xFF << DAC_LSB_PIN); }
 
 
 MODULE INFORMATION:   INITIALIZED  UNINITIALIZED

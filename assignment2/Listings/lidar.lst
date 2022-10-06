@@ -1,4 +1,4 @@
-C166 COMPILER V7.57.0, LIDAR                                                               10/07/2022 00:54:52 PAGE 1   
+C166 COMPILER V7.57.0, LIDAR                                                               10/07/2022 01:01:47 PAGE 1   
 
 
 C166 COMPILER V7.57.0, COMPILATION OF MODULE LIDAR
@@ -11,8 +11,8 @@ COMPILER INVOKED BY: D:\Keil\C166\BIN\C166.EXE Source\lidar.c BROWSE MOD167 DEBU
     1         // a1793769 - Emily Zhang
     2         /**
     3          * File name lidar.c
-    4          * Description: Function implementation for operations related to the LIDAR 
-    5         **/
+    4          * Description: Function implementation for operations related to the LIDAR
+    5          **/
     6         
     7         /********** Include required submodules**********/
     8         
@@ -20,54 +20,50 @@ COMPILER INVOKED BY: D:\Keil\C166\BIN\C166.EXE Source\lidar.c BROWSE MOD167 DEBU
    10         
    11         /********** Function Definitions **********/
    12         
-   13         void lidarT6Interrupt (void) interrupt 0x26
-   14         {
-   15  1        T6R = 0;  // stop timer T6
-   16  1        g_wait_flag = 0;  // lower flag, indicate "take next measurement!"
-   17  1      }
-   18         void lidarTimerInit(void)
-   19         {
-   20  1        timerT6Config(GPT_2_PRESC_4, TIMER_MODE, COUNT_DOWN);
-   21  1        timerT6EnableInterrupt();
-   22  1      }
-   23         
-   24         float lidarGetResult(void)
-   25         {
-   26  1        float raw_lidar_output = 0;
-   27  1        float interpolated_result = 0; 
-   28  1      
-   29  1        // collect and return result
-   30  1        raw_lidar_output = adcRead(LIDAR_PIN, FIXED_SINGLE);
-   31  1        interpolated_result = (raw_lidar_output * LIDAR_STEP_SIZE) + 5;
-   32  1        
-   33  1        return interpolated_result;
-   34  1      }
-   35         
-   36         void lidarUpdateBuffer(void)
-   37         {
-   38  1        float lidar_result = lidarGetResult();
-   39  1      
-   40  1        interruptDisable(); // disable interrupts for now
-   41  1        pop_front(g_dist_buffer, BUFFER_SIZE);
-   42  1        push_back(g_dist_buffer, BUFFER_SIZE, lidar_result);
-   43  1        g_wait_flag = 1;    // raise flag, indicates "measurement taken"
-   44  1      
-   45  1        interruptEnable(); // re-enable interrupts
-   46  1        
-   47  1        timerT6StartMS(10);   // start 10ms timer
-   48  1      }
+   13         void lidarT6Interrupt(void) interrupt 0x26 {
+   14  1        T6R = 0;         // stop timer T6
+   15  1        g_wait_flag = 0; // lower flag, indicate "take next measurement!"
+   16  1      }
+   17         void lidarTimerInit(void) {
+   18  1        timerT6Config(GPT_2_PRESC_4, TIMER_MODE, COUNT_DOWN);
+   19  1        timerT6EnableInterrupt();
+   20  1      }
+   21         
+   22         float lidarGetResult(void) {
+   23  1        float raw_lidar_output = 0;
+   24  1        float interpolated_result = 0;
+   25  1      
+   26  1        // collect and return result
+   27  1        raw_lidar_output = adcRead(LIDAR_PIN, FIXED_SINGLE);
+   28  1        interpolated_result = (raw_lidar_output * LIDAR_STEP_SIZE) + 5;
+   29  1      
+   30  1        return interpolated_result;
+   31  1      }
+   32         
+   33         void lidarUpdateBuffer(void) {
+   34  1        float lidar_result = lidarGetResult();
+   35  1      
+   36  1        interruptDisable(); // disable interrupts for now
+   37  1        pop_front(g_dist_buffer, BUFFER_SIZE);
+   38  1        push_back(g_dist_buffer, BUFFER_SIZE, lidar_result);
+   39  1        g_wait_flag = 1; // raise flag, indicates "measurement taken"
+   40  1      
+   41  1        interruptEnable(); // re-enable interrupts
+   42  1      
+   43  1        timerT6StartMS(10); // start 10ms timer
+   44  1      }
 
 
 MODULE INFORMATION:   INITIALIZED  UNINITIALIZED
   CODE SIZE        =         162     --------
   NEAR-CONST SIZE  =    --------     --------
   FAR-CONST SIZE   =    --------     --------
-C166 COMPILER V7.57.0, LIDAR                                                               10/07/2022 00:54:52 PAGE 2   
-
   HUGE-CONST SIZE  =    --------     --------
   XHUGE-CONST SIZE =    --------     --------
   NEAR-DATA SIZE   =    --------     --------
   FAR-DATA SIZE    =    --------     --------
+C166 COMPILER V7.57.0, LIDAR                                                               10/07/2022 01:01:47 PAGE 2   
+
   XHUGE-DATA SIZE  =    --------     --------
   IDATA-DATA SIZE  =    --------     --------
   SDATA-DATA SIZE  =    --------     --------

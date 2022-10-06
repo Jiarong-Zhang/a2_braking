@@ -1,4 +1,4 @@
-C166 COMPILER V7.57.0, AEB                                                                 10/07/2022 00:54:52 PAGE 1   
+C166 COMPILER V7.57.0, AEB                                                                 10/07/2022 01:01:47 PAGE 1   
 
 
 C166 COMPILER V7.57.0, COMPILATION OF MODULE AEB
@@ -12,44 +12,39 @@ COMPILER INVOKED BY: D:\Keil\C166\BIN\C166.EXE Drivers\aeb.c BROWSE MOD167 DEBUG
     2         /**
     3          * File name: adc.h
     4          * Description: Implementation for AEB functions
-    5         **/
+    5          **/
     6         
     7         /********** Include required submodules**********/
     8         
     9         #include "Drivers/aeb.h"
-   10         #include "Drivers/gpio.h"
-   11         #include "Drivers/timer.h"
-   12         #include "Drivers/dac.h"
+   10         #include "Drivers/dac.h"
+   11         #include "Drivers/gpio.h"
+   12         #include "Drivers/timer.h"
    13         
    14         /********** Function Definitions **********/
    15         
-   16         void aebInit(void)
-   17         {
-   18  1        setPinDirectionP2(AEB_WARNING_PIN, OUTPUT);
-   19  1        setPinDirectionP2(AEB_INPUT_PIN, INPUT);
-   20  1        // don't need to set pin dir of P5 pins
-   21  1        // as they are read-only
-   22  1      
-   23  1        // setup timer T3 (to be used as a 4 second timer)
-   24  1        timerT3Config(GPT_1_PRESC_1024, TIMER_MODE, COUNT_DOWN);
-   25  1      }
-   26         
-   27         unsigned int aebRead(void)
-   28         {
-   29  1        return readPinP2(AEB_INPUT_PIN);
-   30  1      }
-   31         
-   32         void aebWarning(void)
-   33         {
-   34  1        setPinP2(AEB_WARNING_PIN);
-   35  1        dacReset();
-   36  1      
-   37  1        timerT3StartS(AEB_WARNING_TIME);
-   38  1        while (T3R){}  // wait to finish
-   39  1      
-   40  1        clrPinP2(AEB_WARNING_PIN);
-   41  1      
-   42  1      }
+   16         void aebInit(void) {
+   17  1        setPinDirectionP2(AEB_WARNING_PIN, OUTPUT);
+   18  1        setPinDirectionP2(AEB_INPUT_PIN, INPUT);
+   19  1        // don't need to set pin dir of P5 pins
+   20  1        // as they are read-only
+   21  1      
+   22  1        // setup timer T3 (to be used as a 4 second timer)
+   23  1        timerT3Config(GPT_1_PRESC_1024, TIMER_MODE, COUNT_DOWN);
+   24  1      }
+   25         
+   26         unsigned int aebRead(void) { return readPinP2(AEB_INPUT_PIN); }
+   27         
+   28         void aebWarning(void) {
+   29  1        setPinP2(AEB_WARNING_PIN);
+   30  1        dacReset();
+   31  1      
+   32  1        timerT3StartS(AEB_WARNING_TIME);
+   33  1        while (T3R) {
+   34  2        } // wait to finish
+   35  1      
+   36  1        clrPinP2(AEB_WARNING_PIN);
+   37  1      }
 
 
 MODULE INFORMATION:   INITIALIZED  UNINITIALIZED
@@ -62,13 +57,13 @@ MODULE INFORMATION:   INITIALIZED  UNINITIALIZED
   FAR-DATA SIZE    =    --------     --------
   XHUGE-DATA SIZE  =    --------     --------
   IDATA-DATA SIZE  =    --------     --------
-C166 COMPILER V7.57.0, AEB                                                                 10/07/2022 00:54:52 PAGE 2   
-
   SDATA-DATA SIZE  =    --------     --------
   BDATA-DATA SIZE  =    --------     --------
   HUGE-DATA SIZE   =    --------     --------
   BIT SIZE         =    --------     --------
   INIT'L SIZE      =    --------     --------
+C166 COMPILER V7.57.0, AEB                                                                 10/07/2022 01:01:47 PAGE 2   
+
 END OF MODULE INFORMATION.
 
 
