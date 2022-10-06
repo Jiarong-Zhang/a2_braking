@@ -1,4 +1,4 @@
-C166 COMPILER V7.57.0, ADC                                                                 10/06/2022 13:26:17 PAGE 1   
+C166 COMPILER V7.57.0, ADC                                                                 10/07/2022 00:54:52 PAGE 1   
 
 
 C166 COMPILER V7.57.0, COMPILATION OF MODULE ADC
@@ -10,60 +10,64 @@ COMPILER INVOKED BY: D:\Keil\C166\BIN\C166.EXE Drivers\adc.c BROWSE MOD167 DEBUG
 
     1         // a1793769 - Emily Zhang
     2         /**
-    3         Function implementations for operations related to the C167 ADC
-    4         **/
-    5         
-    6         #include "Drivers/adc.h"
-    7         
-    8         void adcGpioInit(void)
-    9         {
-   10  1        configPinP5(ENCODER_PIN, ANALOGUE);
-   11  1        configPinP5(LIDAR_PIN, ANALOGUE);
-   12  1      }
-   13         
-   14         void adcReset(void)
-   15         {
-   16  1        // TBD
-   17  1        ADCON = 0x0000;
-   18  1      }
-   19         
-   20         unsigned int adcCheckBusy(void)
-   21         {
-   22  1        if (ADCON & (1 << BUSY_BIT))
-   23  1        {
-   24  2          return 1;
-   25  2        }
-   26  1        else
+    3          * File name adc.c
+    4          * Description: Function implementations for operations related to the C167 ADC
+    5         **/
+    6         
+    7         /********** Include required submodules**********/
+    8         
+    9         #include "Drivers/adc.h"
+   10         
+   11         /********** Function Definitions **********/
+   12         
+   13         void adcGpioInit(void)
+   14         {
+   15  1        configPinP5(ENCODER_PIN, ANALOGUE);
+   16  1        configPinP5(LIDAR_PIN, ANALOGUE);
+   17  1      }
+   18         
+   19         void adcReset(void)
+   20         {
+   21  1        ADCON = 0x0000;
+   22  1      }
+   23         
+   24         unsigned int adcCheckBusy(void)
+   25         {
+   26  1        if (ADCON & (1 << BUSY_BIT))
    27  1        {
-   28  2          return 0;
-   29  2        } 
-   30  1      }
-   31         
-   32         float adcRead(unsigned int channel, unsigned int mode)
-   33         {
-   34  1        float result;
-   35  1        
-   36  1        // set conversion channel
-   37  1        ADCON |= (channel << CH_BIT);
-   38  1      
-   39  1        // set conversion mode
-   40  1        ADCON |= (mode << MODE_BIT);
-   41  1      
-   42  1        // start conversion 
-   43  1        ADCON |= (ADC_ON << START_BIT);
-   44  1      
-   45  1        // wait
-   46  1        while (adcCheckBusy()){}
-   47  1      
-   48  1        // once no longer busy, grab result
-   49  1        result = (ADDAT &= 0x3FF);
-   50  1      
-   51  1        adcReset();
-   52  1      
-   53  1        return result;
-   54  1      }
-C166 COMPILER V7.57.0, ADC                                                                 10/06/2022 13:26:17 PAGE 2   
+   28  2          return 1;
+   29  2        }
+   30  1        else
+   31  1        {
+   32  2          return 0;
+   33  2        } 
+   34  1      }
+   35         
+   36         float adcRead(unsigned int channel, unsigned int mode)
+   37         {
+   38  1        float result;
+   39  1        
+   40  1        // set conversion channel
+   41  1        ADCON |= (channel << CH_BIT);
+   42  1      
+   43  1        // set conversion mode
+   44  1        ADCON |= (mode << MODE_BIT);
+   45  1      
+   46  1        // start conversion 
+   47  1        ADCON |= (ADC_ON << START_BIT);
+   48  1      
+   49  1        // wait
+   50  1        while (adcCheckBusy()){}
+   51  1      
+   52  1        // once no longer busy, grab result
+   53  1        result = (ADDAT &= 0x3FF);
+   54  1      
+C166 COMPILER V7.57.0, ADC                                                                 10/07/2022 00:54:52 PAGE 2   
 
+   55  1        adcReset();
+   56  1      
+   57  1        return result;
+   58  1      }
 
 
 MODULE INFORMATION:   INITIALIZED  UNINITIALIZED

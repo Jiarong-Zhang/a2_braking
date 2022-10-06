@@ -1,4 +1,4 @@
-C166 COMPILER V7.57.0, ENCODER                                                             10/06/2022 21:50:49 PAGE 1   
+C166 COMPILER V7.57.0, ENCODER                                                             10/07/2022 00:54:52 PAGE 1   
 
 
 C166 COMPILER V7.57.0, COMPILATION OF MODULE ENCODER
@@ -10,26 +10,28 @@ COMPILER INVOKED BY: D:\Keil\C166\BIN\C166.EXE Source\encoder.c BROWSE MOD167 DE
 
     1         // a1793769 - Emily Zhang
     2         /**
-    3         Implementation of encoder calculations
-    4         **/
-    5         
-    6         /* Include required submodules */
-    7         #include <reg167.h>
-    8         #include "encoder.h"
-    9         
-   10         /********** Function Declearations **********/
+    3          * File name encoder.c
+    4          * Description: Implementation of encoder calculations
+    5         **/
+    6         
+    7         /********** Include required submodules**********/
+    8         
+    9         #include <reg167.h>
+   10         #include "encoder.h"
    11         
-   12         float encoderGetVelocity(void)
-   13         {
-   14  1        float raw_encoder_output = 0;
-   15  1        float interpolated_result = 0;
-   16  1      
-   17  1        raw_encoder_output = adcRead(ENCODER_PIN, FIXED_SINGLE);
+   12         /********** Include required submodules**********/
+   13         
+   14         float encoderGetVelocity(void)
+   15         {
+   16  1        float raw_encoder_output = 0;
+   17  1        float interpolated_result = 0;
    18  1      
-   19  1        interpolated_result = raw_encoder_output * ENCODER_STEP_SIZE;
+   19  1        raw_encoder_output = adcRead(ENCODER_PIN, FIXED_SINGLE);
    20  1      
-   21  1        return interpolated_result;
-   22  1      }
+   21  1        interpolated_result = raw_encoder_output * ENCODER_STEP_SIZE;
+   22  1      
+   23  1        return interpolated_result;
+   24  1      }
 
 
 MODULE INFORMATION:   INITIALIZED  UNINITIALIZED

@@ -235,7 +235,7 @@
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>Source\main.c</Filename>
+          <Filename>G:\micro_assignment2\assignment2\Source\main.c</Filename>
           <ExecCommand></ExecCommand>
           <Expression>\\a1793769\MAIN\42</Expression>
         </Bp>
@@ -251,7 +251,7 @@
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>Source\lidar.c</Filename>
+          <Filename>G:\micro_assignment2\assignment2\Source\lidar.c</Filename>
           <ExecCommand></ExecCommand>
           <Expression>\\a1793769\LIDAR\86</Expression>
         </Bp>
@@ -267,7 +267,7 @@
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>Source\lidar.c</Filename>
+          <Filename>G:\micro_assignment2\assignment2\Source\lidar.c</Filename>
           <ExecCommand></ExecCommand>
           <Expression>\\a1793769\LIDAR\81</Expression>
         </Bp>

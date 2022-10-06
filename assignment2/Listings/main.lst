@@ -1,4 +1,4 @@
-C166 COMPILER V7.57.0, MAIN                                                                10/07/2022 00:23:17 PAGE 1   
+C166 COMPILER V7.57.0, MAIN                                                                10/07/2022 00:54:52 PAGE 1   
 
 
 C166 COMPILER V7.57.0, COMPILATION OF MODULE MAIN
@@ -9,61 +9,66 @@ COMPILER INVOKED BY: D:\Keil\C166\BIN\C166.EXE Source\main.c BROWSE MOD167 DEBUG
  stmt lvl     source
 
     1         // a1793769 - Emily Zhang
-    2         /*
-    3         Main function that controls the flow of the entire
-    4         subsystem
-    5         */
-    6         
-    7         /* Include required submodules */
-    8         #include "Drivers/aeb.h"
-    9         #include "Drivers/adc.h"
-   10         #include "Drivers/dac.h"
-   11         #include "Drivers/timer.h"
-   12         #include "platform.h"
-   13         #include "Drivers/interrupt.h"
-   14         #include "encoder.h"
-   15         #include "lidar.h"
-   16         #include "calculations.h"
-   17         #include <reg167.h>
-   18         
-   19         /********** Extern Definitions **********/
-   20         volatile unsigned int g_wait_flag = 0;
-   21         volatile float g_dist_buffer[BUFFER_SIZE] = {0};
+    2         /**
+    3          * File name main.c
+    4          * Description: Main function that controls the flow of the entire
+    5           subsystem
+    6         **/
+    7         
+    8         /********** Include required submodules**********/
+    9         
+   10         #include "Drivers/aeb.h"
+   11         #include "Drivers/adc.h"
+   12         #include "Drivers/dac.h"
+   13         #include "Drivers/timer.h"
+   14         #include "platform.h"
+   15         #include "Drivers/interrupt.h"
+   16         #include "encoder.h"
+   17         #include "lidar.h"
+   18         #include "calculations.h"
+   19         #include <reg167.h>
+   20         
+   21         /********** Extern Definitions **********/
    22         
-   23         void main(void)
-   24         {
-   25  1        volatile unsigned int result = 0;
-   26  1        volatile unsigned int ready_flag = 0;
-   27  1        
-   28  1        interruptEnable();
-   29  1        g_wait_flag = 0;
-   30  1        aebInit(); 
-   31  1        dacInit();
-   32  1        adcGpioInit();
-   33  1        lidarTimerInit();
-   34  1      
-   35  1        while(1)
-   36  1        {
-   37  2          ready_flag = aebRead();
-   38  2          if (ready_flag == 1)
-   39  2          {
-   40  3            if (g_wait_flag == 0)   // only update if flag is lowered
-   41  3            {
-   42  4              lidarUpdateBuffer();  // update buffer
-   43  4            }
-   44  3            calculationsHandler();
-   45  3            result = (P2 & 0xFF);
-   46  3          }
-   47  2        }
-   48  1      }
+   23         volatile unsigned int g_wait_flag = 0;
+   24         volatile float g_dist_buffer[BUFFER_SIZE] = {0};
+   25         
+   26         /********** Main **********/
+   27         
+   28         void main(void)
+   29         {
+   30  1        volatile unsigned int result = 0;
+   31  1        volatile unsigned int ready_flag = 0;
+   32  1        
+   33  1        interruptEnable();
+   34  1        g_wait_flag = 0;
+   35  1        aebInit(); 
+   36  1        dacInit();
+   37  1        adcGpioInit();
+   38  1        lidarTimerInit();
+   39  1      
+   40  1        while(1)
+   41  1        {
+   42  2          ready_flag = aebRead();
+   43  2          if (ready_flag == 1)
+   44  2          {
+   45  3            if (g_wait_flag == 0)   // only update if flag is lowered
+   46  3            {
+   47  4              lidarUpdateBuffer();  // update buffer
+   48  4            }
+   49  3            calculationsHandler();
+   50  3            result = (P2 & 0xFF);
+   51  3          }
+   52  2        }
+   53  1      }
+
+C166 COMPILER V7.57.0, MAIN                                                                10/07/2022 00:54:52 PAGE 2   
 
 
 MODULE INFORMATION:   INITIALIZED  UNINITIALIZED
   CODE SIZE        =          76     --------
   NEAR-CONST SIZE  =    --------     --------
   FAR-CONST SIZE   =    --------     --------
-C166 COMPILER V7.57.0, MAIN                                                                10/07/2022 00:23:17 PAGE 2   
-
   HUGE-CONST SIZE  =    --------     --------
   XHUGE-CONST SIZE =    --------     --------
   NEAR-DATA SIZE   =          14     --------
