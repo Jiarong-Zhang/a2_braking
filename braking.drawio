@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2022-10-06T04:14:09.365Z" agent="5.0 (Windows)" etag="kNQwjd_EErB3dfI4KdQw" version="20.2.7" type="github" pages="2">
+<mxfile host="app.diagrams.net" modified="2022-10-06T04:33:21.597Z" agent="5.0 (Windows)" etag="r_yIoSmY1-B3LyZRzITT" version="20.2.7" type="github" pages="2">
   <diagram id="C5RBs43oDa-KdzZeNtuy" name="high_level">
     <mxGraphModel dx="1185" dy="660" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -131,7 +131,7 @@
     </mxGraphModel>
   </diagram>
   <diagram name="low_level" id="D6Tcyl-72ndJnhvJp-jU">
-    <mxGraphModel dx="1673" dy="932" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="981" dy="546" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="BE4b9odS7JJcmuCLsfvv-0" />
         <mxCell id="BE4b9odS7JJcmuCLsfvv-1" parent="BE4b9odS7JJcmuCLsfvv-0" />
@@ -178,7 +178,7 @@
         <mxCell id="BE4b9odS7JJcmuCLsfvv-10" value="&lt;div&gt;AEB &lt;br&gt;&lt;/div&gt;&lt;div&gt;input high?&lt;/div&gt;" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.decision;whiteSpace=wrap;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="BE4b9odS7JJcmuCLsfvv-1">
           <mxGeometry x="120" y="310" width="100" height="100" as="geometry" />
         </mxCell>
-        <mxCell id="ljqrpDVs2nWzhOfp307L-23" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="BE4b9odS7JJcmuCLsfvv-1" source="iDULUNQiDRfPk5zGLDx2-2">
+        <mxCell id="ljqrpDVs2nWzhOfp307L-23" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="BE4b9odS7JJcmuCLsfvv-1" source="iDULUNQiDRfPk5zGLDx2-2" target="ljqrpDVs2nWzhOfp307L-19">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="250" y="490" as="targetPoint" />
           </mxGeometry>
@@ -408,6 +408,53 @@
         </mxCell>
         <mxCell id="Fx_FsqtWgzgns6y88H-w-68" value="Take encoder Input" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="Fx_FsqtWgzgns6y88H-w-66">
           <mxGeometry x="35" y="20" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Fx_FsqtWgzgns6y88H-w-80" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#d6b656;opacity=40;fillColor=#fff2cc;strokeWidth=3;" vertex="1" parent="BE4b9odS7JJcmuCLsfvv-1">
+          <mxGeometry x="1380" y="40" width="190" height="570" as="geometry" />
+        </mxCell>
+        <mxCell id="Fx_FsqtWgzgns6y88H-w-83" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;" edge="1" parent="BE4b9odS7JJcmuCLsfvv-1" source="Fx_FsqtWgzgns6y88H-w-84">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1475.0000000000005" y="220" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Fx_FsqtWgzgns6y88H-w-84" value="&lt;div&gt;Start&lt;/div&gt;" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.start_1;whiteSpace=wrap;" vertex="1" parent="BE4b9odS7JJcmuCLsfvv-1">
+          <mxGeometry x="1425" y="140" width="100" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Fx_FsqtWgzgns6y88H-w-85" value="return" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.terminator;whiteSpace=wrap;fillColor=#FFFFFF;" vertex="1" parent="BE4b9odS7JJcmuCLsfvv-1">
+          <mxGeometry x="1425" y="530" width="100" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Fx_FsqtWgzgns6y88H-w-91" value="" style="group" vertex="1" connectable="0" parent="BE4b9odS7JJcmuCLsfvv-1">
+          <mxGeometry x="1411.5" y="55" width="130" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="Fx_FsqtWgzgns6y88H-w-92" value="" style="verticalLabelPosition=bottom;verticalAlign=top;html=1;shape=process;whiteSpace=wrap;rounded=1;size=0.14;arcSize=6;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="Fx_FsqtWgzgns6y88H-w-91">
+          <mxGeometry width="130" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="Fx_FsqtWgzgns6y88H-w-93" value="Calculate braking distance, braking torque" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="Fx_FsqtWgzgns6y88H-w-91">
+          <mxGeometry x="35" y="20" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Fx_FsqtWgzgns6y88H-w-98" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;" edge="1" parent="BE4b9odS7JJcmuCLsfvv-1" source="Fx_FsqtWgzgns6y88H-w-94" target="Fx_FsqtWgzgns6y88H-w-95">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Fx_FsqtWgzgns6y88H-w-94" value="Calculate Vehicle Linear Velocity" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;sketch=0;" vertex="1" parent="BE4b9odS7JJcmuCLsfvv-1">
+          <mxGeometry x="1415" y="220" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Fx_FsqtWgzgns6y88H-w-99" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;" edge="1" parent="BE4b9odS7JJcmuCLsfvv-1" source="Fx_FsqtWgzgns6y88H-w-95" target="Fx_FsqtWgzgns6y88H-w-96">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Fx_FsqtWgzgns6y88H-w-95" value="&lt;div&gt;Calculate Minimum Braking Distance&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;sketch=0;" vertex="1" parent="BE4b9odS7JJcmuCLsfvv-1">
+          <mxGeometry x="1415" y="295" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Fx_FsqtWgzgns6y88H-w-100" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;" edge="1" parent="BE4b9odS7JJcmuCLsfvv-1" source="Fx_FsqtWgzgns6y88H-w-96" target="Fx_FsqtWgzgns6y88H-w-97">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Fx_FsqtWgzgns6y88H-w-96" value="&lt;div&gt;Calculate Relative Velocity&lt;br&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;sketch=0;" vertex="1" parent="BE4b9odS7JJcmuCLsfvv-1">
+          <mxGeometry x="1415" y="370" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Fx_FsqtWgzgns6y88H-w-102" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;" edge="1" parent="BE4b9odS7JJcmuCLsfvv-1" source="Fx_FsqtWgzgns6y88H-w-97" target="Fx_FsqtWgzgns6y88H-w-85">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Fx_FsqtWgzgns6y88H-w-97" value="&lt;div&gt;Calculate Braking Torque&lt;br&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;sketch=0;" vertex="1" parent="BE4b9odS7JJcmuCLsfvv-1">
+          <mxGeometry x="1415" y="445" width="120" height="60" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
