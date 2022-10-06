@@ -28,6 +28,7 @@ float calculateRelativeVel(void)
 {
 	float result = 0.5 * (g_dist_buffer[BUFFER_SIZE - 1] -
 		 g_dist_buffer[0]);
+
 	return result;
 }
 
@@ -94,7 +95,7 @@ void calculationsHandler(void)
 	{
 		dacWrite(0x01);
 	}
-	else
+	else if ((braking_torque > 0) && (braking_torque < MAX_BRAKE_TORQUE))
 	{
 		dacWrite((unsigned int)braking_torque * DAC_SCALE_FACTOR);
 	}

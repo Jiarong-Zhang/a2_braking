@@ -1,4 +1,4 @@
-C166 COMPILER V7.57.0, LIDAR                                                               10/06/2022 13:40:06 PAGE 1   
+C166 COMPILER V7.57.0, LIDAR                                                               10/06/2022 20:25:54 PAGE 1   
 
 
 C166 COMPILER V7.57.0, COMPILATION OF MODULE LIDAR
@@ -62,14 +62,14 @@ COMPILER INVOKED BY: D:\Keil\C166\BIN\C166.EXE Source\lidar.c BROWSE MOD167 DEBU
    52         void lidarT6Interrupt (void) interrupt 0x26
    53         {
    54  1        T6R = 0;  // stop timer T6
-C166 COMPILER V7.57.0, LIDAR                                                               10/06/2022 13:40:06 PAGE 2   
+C166 COMPILER V7.57.0, LIDAR                                                               10/06/2022 20:25:54 PAGE 2   
 
-   55  1        g_wait_flag = 0;
+   55  1        g_wait_flag = 0;  // lower flag, indicate "take next measurement!"
    56  1      }
    57         void lidarTimerInit(void)
    58         {
    59  1        timerT6Config(GPT_2_PRESC_4, TIMER_MODE, COUNT_DOWN);
-   60  1        T6IC = 0x0044; // set up timer 6interrupt config
+   60  1        timerT6EnableInterrupt();
    61  1      }
    62         
    63         float lidarGetResult(void)
@@ -87,13 +87,20 @@ COMPILER INVOKED BY: D:\Keil\C166\BIN\C166.EXE Source\lidar.c BROWSE MOD167 DEBU
    75         void lidarUpdateBuffer(void)
    76         {
    77  1        float lidar_result = lidarGetResult();
-   78  1        pop_front(g_dist_buffer, BUFFER_SIZE);
-   79  1        push_back(g_dist_buffer, BUFFER_SIZE, lidar_result);
-   80  1      }
+   78  1      
+   79  1        interruptDisable(); // disable interrupts for now
+   80  1        pop_front(g_dist_buffer, BUFFER_SIZE);
+   81  1        push_back(g_dist_buffer, BUFFER_SIZE, lidar_result);
+   82  1        g_wait_flag = 1;    // raise flag, indicates "measurement taken"
+   83  1      
+   84  1        interruptEnable(); // re-enable interrupts
+   85  1        
+   86  1        timerT6StartMS(10);   // start 10ms timer
+   87  1      }
 
 
 MODULE INFORMATION:   INITIALIZED  UNINITIALIZED
-  CODE SIZE        =         142     --------
+  CODE SIZE        =         162     --------
   NEAR-CONST SIZE  =    --------     --------
   FAR-CONST SIZE   =    --------     --------
   HUGE-CONST SIZE  =    --------     --------

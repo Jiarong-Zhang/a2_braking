@@ -1,4 +1,4 @@
-C166 COMPILER V7.57.0, TIMER                                                               10/06/2022 13:40:06 PAGE 1   
+C166 COMPILER V7.57.0, TIMER                                                               10/06/2022 20:25:55 PAGE 1   
 
 
 C166 COMPILER V7.57.0, COMPILATION OF MODULE TIMER
@@ -41,157 +41,163 @@ COMPILER INVOKED BY: D:\Keil\C166\BIN\C166.EXE Drivers\timer.c BROWSE MOD167 DEB
    31  1        
    32  1      }
    33         
-   34         void timerT6StartMS(unsigned int ms)
+   34         void timerT6EnableInterrupt(void)
    35         {
-   36  1        unsigned int T6I = 0;
-   37  1        unsigned int value = 0;
-   38  1        float percentage = 0;
-   39  1        float period = 0;
-   40  1      
-   41  1        // get period based on input selection (T6CON[2:0])
-   42  1        T6I = (T6CON & 0x07);
-   43  1      
-   44  1        switch (T6I) {
-   45  2          case 0U:
-   46  2            period = 13.0;
-   47  2            break;
-   48  2          case 1U:
-   49  2            period = 26.0;
-   50  2            break;
-   51  2          case 2U:
-   52  2            period = 52.5;
+   36  1        T6IC = 0x0044; // set up timer 6 interrupt config
+   37  1      }
+   38         
+   39         
+   40         void timerT6StartMS(unsigned int ms)
+   41         {
+   42  1        unsigned int T6I = 0;
+   43  1        unsigned int value = 0;
+   44  1        float percentage = 0;
+   45  1        float period = 0;
+   46  1      
+   47  1        // get period based on input selection (T6CON[2:0])
+   48  1        T6I = (T6CON & 0x07);
+   49  1      
+   50  1        switch (T6I) {
+   51  2          case 0U:
+   52  2            period = 13.0;
    53  2            break;
-   54  2          case 3U:
-C166 COMPILER V7.57.0, TIMER                                                               10/06/2022 13:40:06 PAGE 2   
+   54  2          case 1U:
+C166 COMPILER V7.57.0, TIMER                                                               10/06/2022 20:25:55 PAGE 2   
 
-   55  2            period = 105.0;
+   55  2            period = 26.0;
    56  2            break;
-   57  2          case 4U:
-   58  2            period = 210.0;
+   57  2          case 2U:
+   58  2            period = 52.5;
    59  2            break;
-   60  2          case 5U:
-   61  2            period = 420.0;
+   60  2          case 3U:
+   61  2            period = 105.0;
    62  2            break;
-   63  2          case 6U:
-   64  2            period = 840.0;
+   63  2          case 4U:
+   64  2            period = 210.0;
    65  2            break;
-   66  2          case 7U:
-   67  2            period = 1680.0;
+   66  2          case 5U:
+   67  2            period = 420.0;
    68  2            break;
-   69  2        }
-   70  1      
-   71  1        // calculate usage percentage
-   72  1        percentage = ms / period;
-   73  1      
-   74  1        // calculate inital value
-   75  1        value = percentage * 0xFFFF;
+   69  2          case 6U:
+   70  2            period = 840.0;
+   71  2            break;
+   72  2          case 7U:
+   73  2            period = 1680.0;
+   74  2            break;
+   75  2        }
    76  1      
-   77  1        // load inital value
-   78  1        T6 = value;
+   77  1        // calculate usage percentage
+   78  1        percentage = ms / period;
    79  1      
-   80  1        T6CON |= (TIMER_ON << TIMER_START_BIT);
-   81  1      }
-   82         
-   83         void timerT3Config(unsigned int prescaler, unsigned int mode, unsigned int direction)
-   84         {
-   85  1        // set prescaler
-   86  1        T3CON |= (prescaler << TIMER_IN_S_BIT);
-   87  1      
-   88  1        // set timer mode
-   89  1        T3CON |= (mode << TIMER_MODE_BIT);
-   90  1      
-   91  1        // set count direction
-   92  1        T3CON |= (direction << COUNT_DIR_BIT);
+   80  1        // calculate inital value
+   81  1        value = percentage * 0xFFFF;
+   82  1      
+   83  1        // load inital value
+   84  1        T6 = value;
+   85  1      
+   86  1        T6CON |= (TIMER_ON << TIMER_START_BIT);
+   87  1      }
+   88         
+   89         void timerT3Config(unsigned int prescaler, unsigned int mode, unsigned int direction)
+   90         {
+   91  1        // set prescaler
+   92  1        T3CON |= (prescaler << TIMER_IN_S_BIT);
    93  1      
-   94  1      }
-   95         void timerT3StartS(unsigned int sec)
-   96         {
-   97  1        unsigned int T3I = 0;
-   98  1        unsigned int value = 0;
-   99  1        unsigned int runs_reqired = 0;
-  100  1        float time_left = 0.0;
-  101  1        float percentage = 0;
-  102  1        float period = 0;
-  103  1      
-  104  1        // get period based on input selection (T3CON[2:0])
-  105  1        T3I = (T3CON & 0x07);
-  106  1      
-  107  1        switch (T3I) {
-  108  2          case 0U:
-  109  2            period = 0.0262;
-  110  2            break;
-  111  2          case 1U:
-  112  2            period = 0.0525;
-  113  2            break;
-  114  2          case 2U:
-  115  2            period = 0.1050;
+   94  1        // set timer mode
+   95  1        T3CON |= (mode << TIMER_MODE_BIT);
+   96  1      
+   97  1        // set count direction
+   98  1        T3CON |= (direction << COUNT_DIR_BIT);
+   99  1      
+  100  1      }
+  101         void timerT3StartS(unsigned int sec)
+  102         {
+  103  1        unsigned int T3I = 0;
+  104  1        unsigned int value = 0;
+  105  1        unsigned int runs_reqired = 0;
+  106  1        float time_left = 0.0;
+  107  1        float percentage = 0;
+  108  1        float period = 0;
+  109  1      
+  110  1        // get period based on input selection (T3CON[2:0])
+  111  1        T3I = (T3CON & 0x07);
+  112  1      
+  113  1        switch (T3I) {
+  114  2          case 0U:
+  115  2            period = 0.0262;
   116  2            break;
-C166 COMPILER V7.57.0, TIMER                                                               10/06/2022 13:40:06 PAGE 3   
+C166 COMPILER V7.57.0, TIMER                                                               10/06/2022 20:25:55 PAGE 3   
 
-  117  2          case 3U:
-  118  2            period = 0.2100;
+  117  2          case 1U:
+  118  2            period = 0.0525;
   119  2            break;
-  120  2          case 4U:
-  121  2            period = 0.4200;
+  120  2          case 2U:
+  121  2            period = 0.1050;
   122  2            break;
-  123  2          case 5U:
-  124  2            period = 0.8400;
+  123  2          case 3U:
+  124  2            period = 0.2100;
   125  2            break;
-  126  2          case 6U:
-  127  2            period = 1.68;
+  126  2          case 4U:
+  127  2            period = 0.4200;
   128  2            break;
-  129  2          case 7U:
-  130  2            period = 3.36;
+  129  2          case 5U:
+  130  2            period = 0.8400;
   131  2            break;
-  132  2        }
-  133  1        
-  134  1        time_left = sec;
-  135  1        T3IC = 0x44;
-  136  1        if (sec > period)
-  137  1        {
-  138  2          runs_reqired = sec / period + 1;
-  139  2          T3 = 0xFFFF;
-  140  2      
-  141  2          while (run_counter < runs_reqired - 1)
-  142  2          {
-  143  3            if (T3R == 0)
-  144  3            {
-  145  4              T3R = 1;
-  146  4            }
-  147  3            
-  148  3          }
-  149  2      //    T3IC = 0x00;
-  150  2        time_left = sec - period * run_counter;
-  151  2        }
-  152  1      
-  153  1        // calculate usage percentage
-  154  1          percentage = time_left / period;
-  155  1      
-  156  1          // calculate inital value
-  157  1          value = percentage * 0xFFFF;
-  158  1      
-  159  1          // load inital value
-  160  1          T3 = value;
-  161  1      
-  162  1          T3CON |= (TIMER_ON << TIMER_START_BIT);
+  132  2          case 6U:
+  133  2            period = 1.68;
+  134  2            break;
+  135  2          case 7U:
+  136  2            period = 3.36;
+  137  2            break;
+  138  2        }
+  139  1        
+  140  1        time_left = sec;
+  141  1        T3IC = 0x44;
+  142  1        if (sec > period)
+  143  1        {
+  144  2          runs_reqired = sec / period + 1;
+  145  2          T3 = 0xFFFF;
+  146  2      
+  147  2          while (run_counter < runs_reqired - 1)
+  148  2          {
+  149  3            if (T3R == 0)
+  150  3            {
+  151  4              T3R = 1;
+  152  4            }
+  153  3            
+  154  3          }
+  155  2        time_left = sec - period * run_counter;
+  156  2        }
+  157  1      
+  158  1        // calculate usage percentage
+  159  1          percentage = time_left / period;
+  160  1      
+  161  1          // calculate inital value
+  162  1          value = percentage * 0xFFFF;
   163  1      
-  164  1      }
+  164  1          // load inital value
+  165  1          T3 = value;
+  166  1      
+  167  1          T3CON |= (TIMER_ON << TIMER_START_BIT);
+  168  1          run_counter = 0;
+  169  1      
+  170  1      }
 
 
 MODULE INFORMATION:   INITIALIZED  UNINITIALIZED
-  CODE SIZE        =         670     --------
+  CODE SIZE        =         680     --------
   NEAR-CONST SIZE  =    --------     --------
   FAR-CONST SIZE   =    --------     --------
   HUGE-CONST SIZE  =    --------     --------
   XHUGE-CONST SIZE =    --------     --------
+C166 COMPILER V7.57.0, TIMER                                                               10/06/2022 20:25:55 PAGE 4   
+
   NEAR-DATA SIZE   =           2     --------
   FAR-DATA SIZE    =    --------     --------
   XHUGE-DATA SIZE  =    --------     --------
   IDATA-DATA SIZE  =    --------     --------
   SDATA-DATA SIZE  =    --------     --------
   BDATA-DATA SIZE  =    --------     --------
-C166 COMPILER V7.57.0, TIMER                                                               10/06/2022 13:40:06 PAGE 4   
-
   HUGE-DATA SIZE   =    --------     --------
   BIT SIZE         =    --------     --------
   INIT'L SIZE      =           6     --------

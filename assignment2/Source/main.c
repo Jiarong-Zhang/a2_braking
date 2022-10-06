@@ -22,16 +22,16 @@ volatile float g_dist_buffer[BUFFER_SIZE] = {0};
 
 void main(void)
 {
-	volatile float result = 0;
+	volatile unsigned int result = 0;
 	volatile unsigned int ready_flag = 0;
 	
 	interruptEnable();
 	g_wait_flag = 0;
 	aebInit(); 
-	adcGpioInit();
 	dacInit();
+	adcGpioInit();
 	lidarTimerInit();
-	
+
 	while(1)
 	{
 		ready_flag = aebRead();
@@ -42,6 +42,7 @@ void main(void)
 				lidarUpdateBuffer();	// update buffer
 			}
 			calculationsHandler();
+			result = (P2 & 0xFF);
 		}
  	}
 }
